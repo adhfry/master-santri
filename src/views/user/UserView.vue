@@ -10,7 +10,6 @@
           aria-expanded="false"
           aria-controls="hs-large-modal"
           data-hs-overlay="#hs-large-modal"
-          @click="openModal(0)"
         >
           + Tambah Data User
         </button>
