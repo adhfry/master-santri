@@ -200,6 +200,26 @@
                   <i class='bx bx-exit' ></i> Close
                 </button>
               </div>
+              <div class="flex justify-end items-center my-3 gap-x-3">
+                <button type="submit"
+                  class="py-[8px] px-2 inline-flex items-center gap-x-2 text-sm font-normal rounded-md border border-transparent bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
+                  <i class='bx bx-subdirectory-right' ></i> Submit
+                </button>
+                <button type="submit"
+                  class="py-[8px] px-2 inline-flex items-center gap-x-2 text-sm font-normal rounded-md border border-transparent bg-slate-400 text-white hover:bg-salte-500 focus:outline-none focus:bg-slate-700 disabled:opacity-50 disabled:pointer-events-none">
+                  <i class='bx bx-exit' ></i> Close
+                </button>
+              </div>
+              <div class="flex justify-end items-center my-3 gap-x-3">
+                <button type="submit"
+                  class="py-[8px] px-2 inline-flex items-center gap-x-2 text-sm font-normal rounded-md border border-transparent bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
+                  <i class='bx bx-subdirectory-right' ></i> Submit
+                </button>
+                <button type="submit"
+                  class="py-[8px] px-2 inline-flex items-center gap-x-2 text-sm font-normal rounded-md border border-transparent bg-slate-400 text-white hover:bg-salte-500 focus:outline-none focus:bg-slate-700 disabled:opacity-50 disabled:pointer-events-none">
+                  <i class='bx bx-exit' ></i> Close
+                </button>
+              </div>
             </div>
           </div>
         </div>
