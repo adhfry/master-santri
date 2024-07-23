@@ -16,7 +16,7 @@
         </button>
       </div>
     </template>
-    <div>
+    <div v-if="users.length > 1">
       <div class="flex flex-col">
         <div class="overflow-x-auto mx-2">
           <div class="p-1.5 w-full inline-block align-middle">
