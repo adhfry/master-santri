@@ -322,10 +322,6 @@
         </div>
       </div>
     </div>
-    <!-- ini belajar git dari sini -->
-    <h1>ini tmabah</h1>
-    <div></div>
-    <!-- end belajar -->
   </Card>
 </template>
 
