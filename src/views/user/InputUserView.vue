@@ -1,8 +1,8 @@
 <template>
   <div>
     <Card>
-      <template #header-card> Input Data User </template>
-      <template #title-card> Silahkan Inputkan data pengguna </template>
+      <template #header-card> Input Data Pengguna Baru </template>
+      <template #title-card> Silahkan masukkan sesuai data yang ada </template>
       <form @submit.prevent="submitForm" class="flex justify-between">
         <div class="max-w-lg space-y-3 w-1/2">
           <!-- NIS Input -->
@@ -34,7 +34,6 @@
               {{ errors.nis[0] }}
             </p>
           </div>
-
           <!-- End NIS Input -->
           <!-- Nama Lengkap Input -->
           <div class="relative">
