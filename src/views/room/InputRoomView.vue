@@ -273,9 +273,9 @@
                     <p
                       class="text-xs ms-4 text-red-600 mt-2"
                       id="hs-validation-name-error-helper"
-                      v-if="errors.no_hp"
+                      v-if="errors.kamar"
                     >
-                      {{ errors.no_hp[0] }}
+                      {{ errors.kamar[0] }}
                     </p>
                   </div>
                   <!-- End No HP Input -->
@@ -314,13 +314,13 @@
                   <div class="flex gap-4">
                     <button
                       type="submit"
-                      class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
+                      class="py-1 px-2 inline-flex items-center gap-x-2 text-sm font-normal rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
                     >
                       Submit Data
                     </button>
                     <button
                       type="reset"
-                      class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-gray-600 text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 disabled:opacity-50 disabled:pointer-events-none"
+                      class="py-1 px-2 inline-flex items-center gap-x-2 text-sm font-normal rounded-lg border border-transparent bg-gray-600 text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 disabled:opacity-50 disabled:pointer-events-none"
                     >
                       Reset Form
                     </button>
