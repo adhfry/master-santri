@@ -199,6 +199,9 @@
                   class="py-[8px] px-2 inline-flex items-center gap-x-2 text-sm font-normal rounded-md border border-transparent bg-slate-400 text-white hover:bg-salte-500 focus:outline-none focus:bg-slate-700 disabled:opacity-50 disabled:pointer-events-none">
                   <i class='bx bx-exit' ></i> Close
                 </button>
+
+
+                
               </div>
             </div>
           </div>
