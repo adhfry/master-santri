@@ -10,7 +10,6 @@
           aria-expanded="false"
           aria-controls="hs-large-modal"
           data-hs-overlay="#hs-large-modal"
-          @click="openModal(0)"
         >
 =======
           aria-haspopup="dialog" aria-expanded="false" aria-controls="hs-large-modal" data-hs-overlay="#hs-large-modal">
@@ -19,6 +18,7 @@
         </button>
       </div>
     </template>
+    <!-- table -->
     <div>
       <div class="flex flex-col">
         <div class="overflow-x-auto mx-2">
