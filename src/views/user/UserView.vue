@@ -5,7 +5,7 @@
       <div class="text-end justify-end me-5">
         <button
           type="button"
-          class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-100 text-blue-800 hover:bg-blue-200 focus:outline-none focus:bg-blue-200 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-400 dark:bg-blue-800/30 dark:hover:bg-blue-800/20 dark:focus:bg-blue-800/20"
+          class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-md border border-transparent bg-blue-100 text-blue-800 hover:bg-blue-200 focus:outline-none focus:bg-blue-200 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-400 dark:bg-blue-800/30 dark:hover:bg-blue-800/20 dark:focus:bg-blue-800/20"
           aria-haspopup="dialog"
           aria-expanded="false"
           aria-controls="hs-large-modal"
@@ -19,7 +19,7 @@
       <div class="flex flex-col">
         <div class="overflow-x-auto mx-2">
           <div class="p-1.5 w-full inline-block align-middle">
-            <div class="custom-scrollbar">
+            <div class="custom-scrollbar overflow-hidden">
               <table
                 id="example"
                 class="min-w-full divide-y divide-gray-200 dark:divide-neutral-700"
@@ -42,97 +42,13 @@
                       scope="col"
                       class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500"
                     >
-                      Nama Panggilan
-                    </th>
-                    <th
-                      scope="col"
-                      class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500"
-                    >
                       NIK
                     </th>
                     <th
                       scope="col"
                       class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500"
                     >
-                      Jenis Kelamin
-                    </th>
-                    <th
-                      scope="col"
-                      class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500"
-                    >
-                      Tempat, Tanggal Lahir
-                    </th>
-                    <th
-                      scope="col"
-                      class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase dark:text-neutral-500"
-                    >
-                      Tinggi
-                    </th>
-                    <th
-                      scope="col"
-                      class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase dark:text-neutral-500"
-                    >
-                      Berat
-                    </th>
-                    <th
-                      scope="col"
-                      class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500"
-                    >
-                      No. HP
-                    </th>
-                    <th
-                      scope="col"
-                      class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500"
-                    >
-                      Email
-                    </th>
-                    <th
-                      scope="col"
-                      class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500"
-                    >
-                      Riwayat Penyakit
-                    </th>
-                    <th
-                      scope="col"
-                      class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500"
-                    >
-                      Anak Ke
-                    </th>
-                    <th
-                      scope="col"
-                      class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500"
-                    >
                       Alamat
-                    </th>
-                    <th
-                      scope="col"
-                      class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500"
-                    >
-                      Kota
-                    </th>
-                    <th
-                      scope="col"
-                      class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500"
-                    >
-                      Kode Pos
-                    </th>
-                    <th
-                      scope="col"
-                      class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase dark:text-neutral-500"
-                    >
-                      Pendidikan Terakhir
-                    </th>
-                    <th
-                      scope="col"
-                      class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase dark:text-neutral-500"
-                    >
-                      Tahun Masuk
-                    </th>
-                    <th
-                      scope="col"
-                      class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase dark:text-neutral-500"
-                    >
-                      Tahun Keluar
                     </th>
                     <th
                       scope="col"
@@ -149,7 +65,7 @@
                     class="group hover:bg-slate-100"
                   >
                     <td
-                      class="px-6 fixed group-hover:bg-slate-100 bg-white py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200"
+                      class="px-6 group-hover:bg-slate-100 bg-white py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200"
                     >
                       {{ user.id }}
                     </td>
@@ -161,53 +77,7 @@
                     <td
                       class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200"
                     >
-                      {{ user.panggilan }}
-                    </td>
-                    <td
-                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200"
-                    >
                       {{ user.nik }}
-                    </td>
-                    <td
-                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200"
-                    >
-                      {{ user.jk === 0 ? "Laki-Laki" : "Perempuan" }}
-                    </td>
-                    <td
-                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200"
-                    >
-                      {{ `${user.tempat_lahir}, ${user.tgl_lahir}` }}
-                    </td>
-
-                    <td
-                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200"
-                    >
-                      {{ user.tinggi + "cm" }}
-                    </td>
-                    <td
-                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200"
-                    >
-                      {{ user.berat + "kg" }}
-                    </td>
-                    <td
-                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200"
-                    >
-                      {{ user.no_hp }}
-                    </td>
-                    <td
-                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200"
-                    >
-                      {{ user.email }}
-                    </td>
-                    <td
-                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200"
-                    >
-                      {{ user.riwayat_penyakit }}
-                    </td>
-                    <td
-                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200"
-                    >
-                      {{ `${user.anak_ke} dari ${user.dari}` }}
                     </td>
                     <td
                       class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200"
@@ -215,33 +85,28 @@
                       {{ user.alamat }}
                     </td>
                     <td
-                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200"
-                    >
-                      {{ user.kota }}
-                    </td>
-                    <td
-                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200"
-                    >
-                      {{ user.kode_pos }}
-                    </td>
-                    <td
-                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200"
-                    >
-                      {{ user.pendidikan }}
-                    </td>
-                    <td
-                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200"
-                    >
-                      {{ user.tahun_masuk }}
-                    </td>
-                    <td
-                      class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200"
-                    >
-                      {{ user.tahun_keluar }}
-                    </td>
-                    <td
                       class="px-6 py-4 flex gap-2 whitespace-nowrap text-end text-sm font-medium"
                     >
+                      <div class="hs-tooltip inline-block">
+                        <button
+                          type="button"
+                          class="hs-tooltip-toggle py-1 px-2 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-yellow-100 text-yellow-800 hover:bg-yellow-200 focus:outline-none focus:bg-yellow-200 disabled:opacity-50 disabled:pointer-events-none dark:text-yellow-500 dark:bg-yellow-800/30 dark:hover:bg-yellow-800/20 dark:focus:bg-yellow-800/20"
+                          aria-haspopup="dialog"
+                          aria-expanded="false"
+                          aria-controls="hs-large-modal"
+                          data-hs-overlay="#hs-large-modal"
+                          id="showData"
+                          @click="editForm(user)"
+                        >
+                          <i class="fa-regular fa-eye"></i>
+                          <span
+                            class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700"
+                            role="tooltip"
+                          >
+                            Lihat Data
+                          </span>
+                        </button>
+                      </div>
                       <div class="hs-tooltip inline-block">
                         <button
                           type="button"
