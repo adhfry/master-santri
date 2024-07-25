@@ -216,6 +216,7 @@
                 </DialogTitle>
                 <div class="mt-2">
                   <form @submit.prevent="" class="flex justify-between gap-3">
+                    <!-- Sebelah Kiri -->
                     <div class="max-w-lg space-y-3 w-1/3">
                       <!-- NIS -->
                       <label
@@ -592,6 +593,11 @@
 </template>
 
 <script setup>
+import { useHead } from "unhead";
+useHead({
+  title: "Users",
+});
+
 import Card from "../../components/Card.vue";
 import { ref, onMounted, nextTick } from "vue";
 import axios from "@/plugins/axios";
@@ -688,12 +694,6 @@ const editForm = (user) => {
     HSOverlay.open("#modal-edit");
     console.log("kesini");
   });
-  // const openBtn = document.querySelector('#modal-gg')
-  // console.log(openBtn);
-
-  // openBtn.addEventListener('click', () => {
-  //   HSOverlay.open('#modal-edit');
-  // });
 };
 
 const showModal = () => {
