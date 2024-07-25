@@ -18,6 +18,7 @@
     "date-fns": "^3.6.0",
     "pinia": "^2.1.7",
     "preline": "^2.4.0",
+    "unhead": "^1.9.16",
     "vue": "^3.4.31",
     "vue-router": "^4.4.0",
     "vue-toastification": "^2.0.0-rc.5"
