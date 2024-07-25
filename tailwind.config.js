@@ -5,7 +5,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        'inter' : ["Inter"]
+        'inter' : ["Inter"],
+        'sfPro' : ["sfPro"],
       }
     },
   },

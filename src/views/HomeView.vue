@@ -6,14 +6,24 @@
       <div
         class="absolute inset-0 bg-[url('@/assets/img/wave.png')] bg-cover bg-size-1/2"
       ></div>
+
       <div
-        class="absolute inset-[0.05rem] bg-white dark:bg-neutral-900 bg-cover h-40 animate-wave"
+        class="absolute inset-[0.05rem] dark:hidden bg-white dark:bg-neutral-900 bg-cover h-40 animate-wave"
       ></div>
       <div
-        class="flex flex-col bg-white border shadow-sm rounded-xl overflow-hidden p-4 md:p-5 dark:bg-neutral-900 dark:border-neutral-700 dark:shadow-neutral-700/70"
+        class="flex flex-col bg-white border shadow-xl rounded-xl overflow-hidden p-4 md:p-5 dark:bg-neutral-900 dark:border-neutral-700 dark:shadow-neutral-700/70"
       >
+        <div
+          class="absolute z-10 bg-[url('@/assets/img/lentera1.png')] hidden xl:block -mt-4 animate-bounce-slow inset-0 left-[41rem] dark:bg-neutral-900 bg-contain bg-no-repeat"
+        ></div>
+        <div
+          class="absolute z-10 bg-[url('@/assets/img/star.png')] hidden xl:block -mt-1 animate-pulse inset-0 left-[70rem] dark:bg-neutral-900 bg-contain bg-no-repeat h-32"
+        ></div>
+        <div
+          class="absolute inset-[0.05rem] left-[50rem] bg-gradient-to-tl rotate-[25deg] -mt-12 from-purple-300 to-white bg-cover h-72 rounded-full"
+        ></div>
         <p
-          class="mt-1 mb-0 text-end text-xl text-gray-500 dark:text-neutral-400 z-10"
+          class="mt-1 me-20 mb-0 text-end text-2xl text-gray-500 dark:text-neutral-400 z-10"
         >
           بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيْمِ
         </p>
@@ -29,14 +39,34 @@
     </div>
     <div class="flex flex-row gap-5 mt-5">
       <div
-        class="bg-white border relative h-[10rem] overflow-hidden rounded-xl shadow-sm w-1/4 dark:bg-neutral-900 dark:border-neutral-700 dark:shadow-neutral-700/70"
+        class="bg-white border custom-gradient relative h-[10rem] overflow-hidden rounded-xl shadow-sm w-1/4 dark:bg-neutral-900 dark:border-neutral-700 dark:shadow-neutral-700/70"
+      >
+        <div class="p-4 md:p-5">
+          <h3 class="text-lg font-bold text-slate-700 dark:text-white">
+            Data Santri
+          </h3>
+
+          <p
+            class="mt-3 ms-3 backdrop-blur-custom font-sfPro text-gray-600 text-2xl font-semibold bg-transparent w-[5rem] h-[5rem] rounded-full flex items-center justify-center dark:text-neutral-400"
+          >
+            80
+          </p>
+          <img
+            src="@/assets/img/boy-rocket.png"
+            class="inset-2 ms-32 animate-bounce-slow -rotate-12 absolute w-36"
+            alt=""
+          />
+        </div>
+      </div>
+      <div
+        class="bg-white border custom-gradient relative h-[10rem] overflow-hidden rounded-xl shadow-sm w-1/4 dark:bg-neutral-900 dark:border-neutral-700 dark:shadow-neutral-700/70"
       >
         <div class="p-4 md:p-5">
           <h3 class="text-lg font-bold text-gray-800 dark:text-white">
             Data Santri
           </h3>
           <p
-            class="mt-8 ms-5 text-gray-500 text-4xl font-bold dark:text-neutral-400"
+            class="mt-3 ms-3 text-gray-500 backdrop-blur-sm text-2xl font-semibold bg-white/50 w-[5rem] h-[5rem] rounded-full flex items-center justify-center dark:text-neutral-400"
           >
             250
           </p>
@@ -48,102 +78,41 @@
         </div>
       </div>
       <div
-        class="bg-white border w-1/4 shadow-sm rounded-xl dark:bg-neutral-900 dark:border-neutral-700 dark:shadow-neutral-700/70"
+        class="bg-white border custom-gradient relative h-[10rem] overflow-hidden rounded-xl shadow-sm w-1/4 dark:bg-neutral-900 dark:border-neutral-700 dark:shadow-neutral-700/70"
       >
         <div class="p-4 md:p-5">
           <h3 class="text-lg font-bold text-gray-800 dark:text-white">
-            Card title
+            Data Santri
           </h3>
-          <p class="mt-2 text-gray-500 dark:text-neutral-400">
-            With supporting text below as a natural lead-in to additional
-            content.
-          </p>
-          <a
-            class="mt-3 inline-flex items-center gap-x-1 text-sm font-semibold rounded-lg border border-transparent text-blue-600 decoration-2 hover:text-blue-700 hover:underline focus:underline focus:outline-none focus:text-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-600 dark:focus:text-blue-600"
-            href="#"
+          <p
+            class="mt-3 ms-3 text-gray-500 text-2xl font-semibold bg-white/25 w-[5rem] h-[5rem] rounded-full flex items-center justify-center dark:text-neutral-400"
           >
-            Card link
-            <svg
-              class="shrink-0 size-4"
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path d="m9 18 6-6-6-6"></path>
-            </svg>
-          </a>
+            250
+          </p>
+          <img
+            src="@/assets/img/molekul.png"
+            class="inset-8 ms-32 -rotate-45 absolute w-32"
+            alt=""
+          />
         </div>
       </div>
       <div
-        class="bg-white border w-1/4 shadow-sm rounded-xl dark:bg-neutral-900 dark:border-neutral-700 dark:shadow-neutral-700/70"
+        class="bg-white border custom-gradient relative h-[10rem] overflow-hidden rounded-xl shadow-sm w-1/4 dark:bg-neutral-900 dark:border-neutral-700 dark:shadow-neutral-700/70"
       >
         <div class="p-4 md:p-5">
           <h3 class="text-lg font-bold text-gray-800 dark:text-white">
-            Card title
+            Data Santri
           </h3>
-          <p class="mt-2 text-gray-500 dark:text-neutral-400">
-            With supporting text below as a natural lead-in to additional
-            content.
-          </p>
-          <a
-            class="mt-3 inline-flex items-center gap-x-1 text-sm font-semibold rounded-lg border border-transparent text-blue-600 decoration-2 hover:text-blue-700 hover:underline focus:underline focus:outline-none focus:text-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-600 dark:focus:text-blue-600"
-            href="#"
+          <p
+            class="mt-3 ms-3 text-gray-500 text-2xl font-semibold bg-white/25 w-[5rem] h-[5rem] rounded-full flex items-center justify-center dark:text-neutral-400"
           >
-            Card link
-            <svg
-              class="shrink-0 size-4"
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path d="m9 18 6-6-6-6"></path>
-            </svg>
-          </a>
-        </div>
-      </div>
-      <div
-        class="bg-white border w-1/4 shadow-sm rounded-xl dark:bg-neutral-900 dark:border-neutral-700 dark:shadow-neutral-700/70"
-      >
-        <div class="p-4 md:p-5">
-          <h3 class="text-lg font-bold text-gray-800 dark:text-white">
-            Card title
-          </h3>
-          <p class="mt-2 text-gray-500 dark:text-neutral-400">
-            With supporting text below as a natural lead-in to additional
-            content.
+            250
           </p>
-          <a
-            class="mt-3 inline-flex items-center gap-x-1 text-sm font-semibold rounded-lg border border-transparent text-blue-600 decoration-2 hover:text-blue-700 hover:underline focus:underline focus:outline-none focus:text-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-600 dark:focus:text-blue-600"
-            href="#"
-          >
-            Card link
-            <svg
-              class="shrink-0 size-4"
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path d="m9 18 6-6-6-6"></path>
-            </svg>
-          </a>
+          <img
+            src="@/assets/img/molekul.png"
+            class="inset-8 ms-32 -rotate-45 absolute w-32"
+            alt=""
+          />
         </div>
       </div>
     </div>
@@ -182,13 +151,48 @@ onMounted(() => {
   background-attachment: fixed;
   background-repeat: no-repeat;
 }
+
+.custom-gradient {
+  background: linear-gradient(
+      135deg,
+      rgba(0, 171, 193, 0.441),
+      rgba(255, 83, 112, 0.286)
+    ),
+    radial-gradient(
+      circle at 30% 30%,
+      rgba(255, 255, 255, 0.6),
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 70% 70%,
+      rgba(255, 255, 255, 0.6),
+      transparent 40%
+    );
+  background-blend-mode: screen;
+}
+
 @keyframes waveAnimation {
   0% {
     transform: translateX(-0.025%);
   }
   100% {
-    transform: translateX(40%);
+    transform: translateX(30%);
   }
+}
+@keyframes upDown {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(0.5rem);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.animate-bounce-slow {
+  animation: upDown 3s ease-in-out infinite;
 }
 .animate-wave {
   animation: waveAnimation 20s linear infinite;

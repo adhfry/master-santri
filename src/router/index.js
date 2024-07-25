@@ -5,43 +5,56 @@ import InputUserView from '../views/user/InputUserView.vue'
 import UserView from '../views/user/UserView.vue'
 import InputRoomView from '../views/room/InputRoomView.vue'
 import RoomView from '../views/room/RoomView.vue'
+import LoginView from '../views/LoginView.vue'
+import user from '../views/user/users.vue'
 
 const routes = [
   {
     path: '/',
-    component: MainLayout,
-    children: [
-      {
-        path: 'home',
-        name: 'home',
-        component: HomeView
-      },
-      {
-        path: 'user',
-        name: 'user',
-        component: UserView
-      },
-      {
-        path: 'user/input',
-        name: 'input-user',
-        component: InputUserView
-      },
-      {
-        path: 'room',
-        name: 'room',
-        component: RoomView
-      },
-      {
-        path: 'room/input',
-        name: 'input-room',
-        component: InputRoomView
-      },
-    ]
-  }
-]
+    name: 'login',
+    component: LoginView
+  },
+  {
+  path: '/',
+  component: MainLayout,
+  children: [
+    
+    {
+      path: 'home',
+      name: 'home',
+      component: HomeView
+    },
+    {
+      path: 'user',
+      name: 'user',
+      component: UserView
+    },
+    {
+      path: 'user/input',
+      name: 'input-user',
+      component: InputUserView
+    },
+    {
+      path: 'room',
+      name: 'room',
+      component: RoomView
+    },
+    {
+      path: 'room/input',
+      name: 'input-room',
+      component: InputRoomView
+    },
+    {
+      path: 'user/user',
+      name: 'input-room',
+      component: user
+    },
+  ]
+},]
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHistory(
+    import.meta.env.BASE_URL),
   routes
 })
 
