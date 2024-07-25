@@ -70,7 +70,7 @@
                       <td
                         class="px-1 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200"
                       >
-                        {{ kamar.kapasitas }}
+                        {{ `${getOccupied(kamar)}/${kamar.kapasitas}` }}
                       </td>
                       <td
                         class="px-4 py-4 flex justify-center gap-2 whitespace-nowrap text-center text-sm font-medium"
@@ -125,6 +125,24 @@
                           selectedKamar.kapasitas
                         }}
                         {{ isFull(selectedKamar) ? "Kamar Penuh" : "" }}</span
+                      >
+                    </h2>
+                    <h2 class="text-sm font-semibold">
+                      Kosong:
+                      <span
+                        :class="{
+                          'text-red-500 font-normal bg-red-100 px-2 py-1 rounded-xl':
+                            isFull(selectedKamar),
+                        }"
+                        >{{
+                          selectedKamar.kapasitas - getOccupied(selectedKamar)
+                            ? selectedKamar.kapasitas -
+                              getOccupied(selectedKamar)
+                            : ""
+                        }}
+                        {{
+                          isFull(selectedKamar) ? "Tidak tersedia" : ""
+                        }}</span
                       >
                     </h2>
                   </div>
@@ -295,7 +313,11 @@
                             :key="kamar.id"
                             :value="kamar.id"
                           >
-                            {{ kamar.kamar }}
+                            {{
+                              `${kamar.kamar} - ${getOccupied(kamar)}/${
+                                kamar.kapasitas
+                              }`
+                            }}
                           </option>
                         </select>
                       </div>
@@ -493,9 +515,12 @@ const getSantrisInKamar = (kamarId) => {
 };
 
 const availableKamars = computed(() => {
-  return kamars.value.filter(
-    (kamar) => kamar.kamar !== selectedSantri.value.kamar
-  );
+  return kamars.value.filter((kamar) => {
+    const userCount = userKamarMapping.value[kamar.id].length || 0;
+    return (
+      kamar.kamar !== selectedSantri.value.kamar && userCount < kamar.kapasitas
+    );
+  });
 });
 
 // mendapatkan banyak santri dari sebuah kamar
