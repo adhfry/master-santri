@@ -1,8 +1,9 @@
 <template>
   <div>
     <button
+      v-if="darkMode === true"
       type="button"
-      class="inline-flex items-center gap-x-2 py-1 px-3 bg-black/10 rounded-full text-sm text-black hover:bg-black/20 focus:outline-none focus:bg-black/20"
+      class="inline-flex items-center gap-x-2 py-1 px-3 bg-white/10 rounded-full text-sm text-white hover:bg-white/20 focus:outline-none focus:bg-white/20"
       @click="toggleTheme"
     >
       <svg
@@ -22,9 +23,10 @@
       Dark
     </button>
     <button
+      v-if="darkMode === false"
       type="button"
       @click="toggleTheme"
-      class="hidden items-center gap-x-2 py-1 px-3 bg-white/10 rounded-full text-sm text-white hover:bg-white/20 focus:outline-none focus:bg-white/20"
+      class="inline-flex items-center gap-x-2 py-1 px-3 bg-black/10 rounded-full text-sm text-black hover:bg-black/20 focus:outline-none focus:bg-black/20"
     >
       <svg
         class="shrink-0 size-4"

@@ -229,7 +229,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, defineComponent } from "vue";
+import { ref, computed, onMounted } from "vue";
 import { format } from "date-fns";
 import { id as idLocale } from "date-fns/locale";
 import ThemeSwitcher from "./ThemeSwitcher.vue";
