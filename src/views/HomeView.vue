@@ -20,10 +20,10 @@
           class="absolute z-[1] bg-[url('@/assets/img/star.png')] hidden xl:block -mt-1 animate-pulse inset-0 left-[70rem] bg-contain bg-no-repeat h-32"
         ></div>
         <div
-          class="absolute inset-[0.05rem] left-[50rem] bg-gradient-to-tl rotate-[25deg] -mt-12 from-purple-400 to-white bg-cover h-72 rounded-full"
+          class="absolute inset-[0.05rem] left-[50rem] dark:bg-gradient-to-tl bg-gradient-to-tl rotate-[25deg] -mt-12 dark:from-purple-100 from-purple-400 dark:to-transparent bg-cover h-72 rounded-full"
         ></div>
         <p
-          class="mt-1 me-20 mb-0 text-end text-2xl text-slate-700 dark:text-gray-900 z-10"
+          class="mt-1 me-20 mb-0 text-end text-2xl text-slate-700 dark:text-gray-200 z-10"
         >
           بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيْمِ
         </p>
