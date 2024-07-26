@@ -14,16 +14,16 @@
         class="flex flex-col bg-white border shadow-xl rounded-xl overflow-hidden p-4 md:p-5 dark:bg-neutral-900 dark:border-neutral-700 dark:shadow-neutral-700/70"
       >
         <div
-          class="absolute z-10 bg-[url('@/assets/img/lentera1.png')] hidden xl:block -mt-4 animate-bounce-slow inset-0 left-[41rem] dark:bg-neutral-900 bg-contain bg-no-repeat"
+          class="absolute bg-[url('@/assets/img/lentera1.png')] hidden xl:block -mt-4 animate-bounce-slow inset-0 left-[41rem] bg-contain bg-no-repeat"
         ></div>
         <div
-          class="absolute z-10 bg-[url('@/assets/img/star.png')] hidden xl:block -mt-1 animate-pulse inset-0 left-[70rem] dark:bg-neutral-900 bg-contain bg-no-repeat h-32"
+          class="absolute z-[1] bg-[url('@/assets/img/star.png')] hidden xl:block -mt-1 animate-pulse inset-0 left-[70rem] bg-contain bg-no-repeat h-32"
         ></div>
         <div
-          class="absolute inset-[0.05rem] left-[50rem] bg-gradient-to-tl rotate-[25deg] -mt-12 from-purple-300 to-white bg-cover h-72 rounded-full"
+          class="absolute inset-[0.05rem] left-[50rem] bg-gradient-to-tl rotate-[25deg] -mt-12 from-purple-400 to-white bg-cover h-72 rounded-full"
         ></div>
         <p
-          class="mt-1 me-20 mb-0 text-end text-2xl text-gray-500 dark:text-neutral-400 z-10"
+          class="mt-1 me-20 mb-0 text-end text-2xl text-slate-700 dark:text-gray-900 z-10"
         >
           بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيْمِ
         </p>
@@ -47,7 +47,7 @@
           </h3>
 
           <p
-            class="mt-3 ms-3 backdrop-blur-custom font-sfPro text-gray-600 text-2xl font-semibold bg-transparent w-[5rem] h-[5rem] rounded-full flex items-center justify-center dark:text-neutral-400"
+            class="mt-3 ms-3 backdrop-blur-custom font-sfPro text-gray-600 text-2xl font-semibold bg-transparent w-[5rem] h-[5rem] rounded-full flex items-center justify-center dark:text-white"
           >
             80
           </p>
@@ -62,17 +62,18 @@
         class="bg-white border custom-gradient relative h-[10rem] overflow-hidden rounded-xl shadow-sm w-1/4 dark:bg-neutral-900 dark:border-neutral-700 dark:shadow-neutral-700/70"
       >
         <div class="p-4 md:p-5">
-          <h3 class="text-lg font-bold text-gray-800 dark:text-white">
-            Data Santri
+          <h3 class="text-lg font-bold text-slate-700 dark:text-white">
+            Data Kamar
           </h3>
+
           <p
-            class="mt-3 ms-3 text-gray-500 backdrop-blur-sm text-2xl font-semibold bg-white/50 w-[5rem] h-[5rem] rounded-full flex items-center justify-center dark:text-neutral-400"
+            class="mt-3 ms-3 backdrop-blur-custom font-sfPro text-gray-600 text-2xl font-semibold bg-transparent w-[5rem] h-[5rem] rounded-full flex items-center justify-center dark:text-white"
           >
-            250
+            17
           </p>
           <img
-            src="@/assets/img/molekul.png"
-            class="inset-8 ms-32 -rotate-45 absolute w-32"
+            src="@/assets/img/kasur2.png"
+            class="inset-8 ms-32 animate-shake-slow absolute w-32"
             alt=""
           />
         </div>
@@ -81,17 +82,18 @@
         class="bg-white border custom-gradient relative h-[10rem] overflow-hidden rounded-xl shadow-sm w-1/4 dark:bg-neutral-900 dark:border-neutral-700 dark:shadow-neutral-700/70"
       >
         <div class="p-4 md:p-5">
-          <h3 class="text-lg font-bold text-gray-800 dark:text-white">
+          <h3 class="text-lg font-bold text-slate-700 dark:text-white">
             Data Santri
           </h3>
+
           <p
-            class="mt-3 ms-3 text-gray-500 text-2xl font-semibold bg-white/25 w-[5rem] h-[5rem] rounded-full flex items-center justify-center dark:text-neutral-400"
+            class="mt-3 ms-3 backdrop-blur-custom font-sfPro text-gray-600 text-2xl font-semibold bg-transparent w-[5rem] h-[5rem] rounded-full flex items-center justify-center dark:text-white"
           >
-            250
+            80
           </p>
           <img
-            src="@/assets/img/molekul.png"
-            class="inset-8 ms-32 -rotate-45 absolute w-32"
+            src="@/assets/img/boy-rocket.png"
+            class="inset-2 ms-32 animate-bounce-slow2 -rotate-12 absolute w-36"
             alt=""
           />
         </div>
@@ -100,17 +102,18 @@
         class="bg-white border custom-gradient relative h-[10rem] overflow-hidden rounded-xl shadow-sm w-1/4 dark:bg-neutral-900 dark:border-neutral-700 dark:shadow-neutral-700/70"
       >
         <div class="p-4 md:p-5">
-          <h3 class="text-lg font-bold text-gray-800 dark:text-white">
+          <h3 class="text-lg font-bold text-slate-700 dark:text-white">
             Data Santri
           </h3>
+
           <p
-            class="mt-3 ms-3 text-gray-500 text-2xl font-semibold bg-white/25 w-[5rem] h-[5rem] rounded-full flex items-center justify-center dark:text-neutral-400"
+            class="mt-3 ms-3 backdrop-blur-custom font-sfPro text-gray-600 text-2xl font-semibold bg-transparent w-[5rem] h-[5rem] rounded-full flex items-center justify-center dark:text-white"
           >
-            250
+            80
           </p>
           <img
-            src="@/assets/img/molekul.png"
-            class="inset-8 ms-32 -rotate-45 absolute w-32"
+            src="@/assets/img/boy-rocket.png"
+            class="inset-2 ms-32 animate-bounce-slow2 -rotate-12 absolute w-36"
             alt=""
           />
         </div>

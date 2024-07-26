@@ -64,7 +64,7 @@
                   <tbody
                     class="divide-y divide-gray-200 dark:divide-neutral-700"
                   >
-                    <tr class="hover:bg-slate-100">
+                    <tr class="hover:bg-slate-100 dark:hover:bg-slate-900">
                       <td
                         class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200"
                       >
@@ -116,7 +116,7 @@
                         </button>
                       </td>
                     </tr>
-                    <tr class="hover:bg-slate-100">
+                    <tr class="hover:bg-slate-100 dark:hover:bg-slate-900">
                       <td
                         class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200"
                       >
@@ -206,22 +206,22 @@
               leave-to="opacity-0 scale-95"
             >
               <DialogPanel
-                class="w-full max-w-4xl transform overflow-hidden rounded-xl bg-white p-6 text-left align-middle shadow-xl transition-all"
+                class="w-full max-w-4xl transform overflow-hidden rounded-xl bg-white p-6 text-left align-middle shadow-xl transition-all dark:bg-neutral-900"
               >
                 <DialogTitle
                   as="h3"
-                  class="text-lg font-semibold leading-6 text-gray-900 mb-5"
+                  class="text-lg font-semibold leading-6 text-gray-900 mb-5 dark:text-white"
                 >
                   Input Data User
                 </DialogTitle>
                 <div class="mt-2">
                   <form @submit.prevent="" class="flex justify-between gap-3">
                     <!-- Sebelah Kiri -->
-                    <div class="max-w-lg space-y-3 w-1/3">
+                    <div class="max-w-lg space-y-3 w-1/3 dark:text-white">
                       <!-- NIS -->
                       <label
                         for="nis"
-                        class="block text-sm font-medium leading-3 text-gray-900"
+                        class="block text-sm font-medium leading-3 text-gray-900 dark:text-neutral-200"
                         >NIS</label
                       >
                       <div class="relative mt-1 rounded-md shadow-sm">
@@ -229,7 +229,7 @@
                           type="text"
                           name="nis"
                           id="nis"
-                          class="block w-full rounded-md border-0 py-1.5 pl-2 pr-1 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                          class="block w-full rounded-md border-0 py-1.5 pl-2 pr-1 dark:bg-neutral-900 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                           placeholder="Masukkan NIS"
                         />
                       </div>
@@ -237,7 +237,7 @@
                       <!-- Nama Lengkap -->
                       <label
                         for="namaLengkap"
-                        class="block text-sm font-medium leading-3 text-gray-900"
+                        class="block text-sm font-medium leading-3 text-gray-900 dark:text-neutral-200"
                         >Nama Lengkap</label
                       >
                       <div class="relative mt-1 rounded-md shadow-sm">
@@ -245,7 +245,7 @@
                           type="text"
                           name="namaLengkap"
                           id="namaLengkap"
-                          class="block w-full rounded-md border-0 py-1.5 pl-2 pr-1 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                          class="block w-full rounded-md border-0 py-1.5 pl-2 pr-1 dark:bg-neutral-900 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                           placeholder="Masukkan Nama Lengkap"
                         />
                       </div>
@@ -253,7 +253,7 @@
                       <!-- Nama Panggilan -->
                       <label
                         for="namaPanggilan"
-                        class="block text-sm font-medium leading-3 text-gray-900"
+                        class="block text-sm font-medium leading-3 text-gray-900 dark:text-neutral-200"
                         >Nama Panggilan</label
                       >
                       <div class="relative mt-1 rounded-md shadow-sm">
@@ -261,7 +261,7 @@
                           type="text"
                           name="namaPanggilan"
                           id="namaPanggilan"
-                          class="block w-full rounded-md border-0 py-1.5 pl-2 pr-1 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                          class="block w-full rounded-md border-0 py-1.5 pl-2 pr-1 dark:bg-neutral-900 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                           placeholder="Masukkan Nama Panggilan"
                         />
                       </div>
@@ -269,7 +269,7 @@
                       <!-- NIK -->
                       <label
                         for="nik"
-                        class="block text-sm font-medium leading-3 text-gray-900"
+                        class="block text-sm font-medium leading-3 text-gray-900 dark:text-neutral-200"
                         >NIK</label
                       >
                       <div class="relative mt-1 rounded-md shadow-sm">
@@ -277,14 +277,14 @@
                           type="text"
                           name="nik"
                           id="nik"
-                          class="block w-full rounded-md border-0 py-1.5 pl-2 pr-1 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                          class="block w-full rounded-md border-0 py-1.5 pl-2 pr-1 dark:bg-neutral-900 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                           placeholder="Masukkan NIK"
                         />
                       </div>
                       <!-- End NIK -->
                       <!-- Jenis Kelamin -->
                       <label
-                        class="block text-sm font-medium leading-3 text-gray-900"
+                        class="block text-sm font-medium leading-3 text-gray-900 dark:text-neutral-200"
                         >Jenis Kelamin</label
                       >
                       <select
@@ -299,7 +299,7 @@
                       <div>
                         <label
                           for="tempat"
-                          class="block text-sm font-medium leading-3 text-gray-900"
+                          class="block text-sm font-medium leading-3 text-gray-900 dark:text-neutral-200"
                           >Tempat, Tanggal Lahir</label
                         >
                         <div
@@ -313,7 +313,7 @@
                             placeholder="Tempat"
                           />
                           <span
-                            class="py-2 px-2 inline-flex items-center min-w-fit w-full border border-gray-200text-sm text-gray-500 -ms-px first:rounded-t-md last:rounded-b-md sm:w-auto sm:first:rounded-s-md sm:mt-0 sm:first:ms-0 sm:first:rounded-se-none sm:last:rounded-es-none sm:last:rounded-e-md dark:bg-neutral-700 dark:border-neutral-700 dark:text-neutral-400"
+                            class="py-2 px-2 inline-flex items-center min-w-fit w-full border border-gray-200text-sm text-gray-500 -ms-px first:rounded-t-md last:rounded-b-md sm:w-auto sm:first:rounded-s-md sm:mt-0 sm:first:ms-0 sm:first:rounded-se-none sm:last:rounded-es-none sm:last:rounded-e-md dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400"
                             >,</span
                           >
                           <input
@@ -326,7 +326,7 @@
                       <!-- No HP -->
                       <label
                         for="noHp"
-                        class="block text-sm font-medium leading-3 text-gray-900"
+                        class="block text-sm font-medium leading-3 text-gray-900 dark:text-neutral-200"
                         >No. HP</label
                       >
                       <div class="relative mt-1 rounded-md shadow-sm">
@@ -334,18 +334,18 @@
                           type="text"
                           name="noHp"
                           id="noHp"
-                          class="block w-full rounded-md border-0 py-1.5 pl-2 pr-1 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                          class="block w-full rounded-md border-0 py-1.5 pl-2 pr-1 dark:bg-neutral-900 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                           placeholder="Masukkan No. HP"
                         />
                       </div>
                       <!-- End No HP -->
                     </div>
                     <!-- Sebelah Tengah -->
-                    <div class="max-w-lg space-y-3 w-1/3">
+                    <div class="max-w-lg space-y-3 w-1/3 dark:text-white">
                       <!-- Email -->
                       <label
                         for="email"
-                        class="block text-sm font-medium leading-3 text-gray-900"
+                        class="block text-sm font-medium leading-3 text-gray-900 dark:text-neutral-200"
                         >Email</label
                       >
                       <div class="relative mt-1 rounded-md shadow-sm">
@@ -353,7 +353,7 @@
                           type="email"
                           name="email"
                           id="email"
-                          class="block w-full rounded-md border-0 py-1.5 pl-2 pr-1 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                          class="block w-full rounded-md border-0 py-1.5 pl-2 pr-1 dark:bg-neutral-900 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                           placeholder="Masukkan Email"
                         />
                       </div>
@@ -361,7 +361,7 @@
                       <!-- Riwayat Penyakit -->
                       <label
                         for="riwayatPenyakit"
-                        class="block text-sm font-medium leading-3 text-gray-900"
+                        class="block text-sm font-medium leading-3 text-gray-900 dark:text-neutral-200"
                         >Riwayat Penyakit</label
                       >
                       <div class="relative mt-1 rounded-md shadow-sm">
@@ -369,7 +369,7 @@
                           type="text"
                           name="riwayatPenyakit"
                           id="riwayatPenyakit"
-                          class="block w-full rounded-md border-0 py-1.5 pl-2 pr-1 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                          class="block w-full rounded-md border-0 py-1.5 pl-2 pr-1 dark:bg-neutral-900 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                           placeholder="Masukkan Riwayat Penyakit"
                         />
                       </div>
@@ -377,7 +377,7 @@
                       <!-- Alamat -->
                       <label
                         for="alamat"
-                        class="block text-sm font-medium leading-3 text-gray-900"
+                        class="block text-sm font-medium leading-3 text-gray-900 dark:text-neutral-200"
                         >Alamat</label
                       >
                       <div class="relative mt-1 rounded-md shadow-sm">
@@ -385,7 +385,7 @@
                           type="text"
                           name="alamat"
                           id="alamat"
-                          class="block w-full rounded-md border-0 py-1.5 pl-2 pr-1 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                          class="block w-full rounded-md border-0 py-1.5 pl-2 pr-1 dark:bg-neutral-900 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                           placeholder="Masukkan Alamat"
                         />
                       </div>
@@ -393,7 +393,7 @@
                       <!-- Kota -->
                       <label
                         for="kota"
-                        class="block text-sm font-medium leading-3 text-gray-900"
+                        class="block text-sm font-medium leading-3 text-gray-900 dark:text-neutral-200"
                         >Kota</label
                       >
                       <div class="relative mt-1 rounded-md shadow-sm">
@@ -401,7 +401,7 @@
                           type="text"
                           name="kota"
                           id="kota"
-                          class="block w-full rounded-md border-0 py-1.5 pl-2 pr-1 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                          class="block w-full rounded-md border-0 py-1.5 pl-2 pr-1 dark:bg-neutral-900 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                           placeholder="Masukkan Kota"
                         />
                       </div>
@@ -409,7 +409,7 @@
                       <!-- Kode Pos -->
                       <label
                         for="kodePos"
-                        class="block text-sm font-medium leading-3 text-gray-900"
+                        class="block text-sm font-medium leading-3 text-gray-900 dark:text-neutral-200"
                         >Kode Pos</label
                       >
                       <div class="relative mt-1 rounded-md shadow-sm">
@@ -417,7 +417,7 @@
                           type="number"
                           name="kodePos"
                           id="kodePos"
-                          class="block w-full rounded-md border-0 py-1.5 pl-2 pr-1 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                          class="block w-full rounded-md border-0 py-1.5 pl-2 pr-1 dark:bg-neutral-900 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                           placeholder="Masukkan Kode Pos"
                         />
                       </div>
@@ -425,7 +425,7 @@
                       <!-- Berat dan Tinggi -->
                       <label
                         for="berat"
-                        class="block text-sm font-medium leading-3 text-gray-900"
+                        class="block text-sm font-medium leading-3 text-gray-900 dark:text-neutral-200"
                         >Berat dan Tinggi Badan</label
                       >
                       <div
@@ -439,7 +439,7 @@
                           placeholder="Berat"
                         />
                         <span
-                          class="py-2 px-2 inline-flex text-sm items-center min-w-fit w-full border border-gray-200text-sm text-gray-500 -ms-px first:rounded-t-md last:rounded-b-md sm:w-auto sm:first:rounded-s-md sm:mt-0 sm:first:ms-0 sm:first:rounded-se-none sm:last:rounded-es-none sm:last:rounded-e-md dark:bg-neutral-700 dark:border-neutral-700 dark:text-neutral-400"
+                          class="py-2 px-2 inline-flex text-sm items-center min-w-fit w-full border border-gray-200text-sm text-gray-500 -ms-px first:rounded-t-md last:rounded-b-md sm:w-auto sm:first:rounded-s-md sm:mt-0 sm:first:ms-0 sm:first:rounded-se-none sm:last:rounded-es-none sm:last:rounded-e-md dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400"
                           >Kg</span
                         >
                         <input
@@ -448,7 +448,7 @@
                           placeholder="Tinggi"
                         />
                         <span
-                          class="py-2 px-2 inline-flex text-sm items-center min-w-fit w-full border border-gray-200text-sm text-gray-500 -ms-px first:rounded-t-md last:rounded-b-md sm:w-auto sm:first:rounded-s-md sm:mt-0 sm:first:ms-0 sm:first:rounded-se-none sm:last:rounded-es-none sm:last:rounded-e-md dark:bg-neutral-700 dark:border-neutral-700 dark:text-neutral-400"
+                          class="py-2 px-2 inline-flex text-sm items-center min-w-fit w-full border border-gray-200text-sm text-gray-500 -ms-px first:rounded-t-md last:rounded-b-md sm:w-auto sm:first:rounded-s-md sm:mt-0 sm:first:ms-0 sm:first:rounded-se-none sm:last:rounded-es-none sm:last:rounded-e-md dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400"
                           >Cm</span
                         >
                       </div>
@@ -456,7 +456,7 @@
                       <!-- Pendidikan Terakhir -->
                       <label
                         for="pendidikan"
-                        class="block text-sm font-medium leading-3 text-gray-900"
+                        class="block text-sm font-medium leading-3 text-gray-900 dark:text-neutral-200"
                         >Pendidikan Terakhir</label
                       >
                       <div class="relative mt-1 rounded-md shadow-sm">
@@ -464,18 +464,18 @@
                           type="number"
                           name="pendidikan"
                           id="pendidikan"
-                          class="block w-full rounded-md border-0 py-1.5 pl-2 pr-1 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                          class="block w-full rounded-md border-0 py-1.5 pl-2 pr-1 dark:bg-neutral-900 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                           placeholder="Masukkan Pendidikan Terakhir"
                         />
                       </div>
                       <!-- End Pendidikan Terakhir -->
                     </div>
                     <!-- Sebelah Kanan -->
-                    <div class="max-w-lg space-y-3 w-1/3">
+                    <div class="max-w-lg space-y-3 w-1/3 dark:text-white">
                       <!-- Anak Ke Dari -->
                       <label
                         for="anakKe"
-                        class="block text-sm font-medium leading-3 text-gray-900"
+                        class="block text-sm font-medium leading-3 text-gray-900 dark:text-neutral-200"
                         >Anak Ke, Dari</label
                       >
                       <div
@@ -489,7 +489,7 @@
                           placeholder="Anak Ke"
                         />
                         <span
-                          class="py-2 px-2 inline-flex items-center min-w-fit w-full border border-gray-200text-sm text-gray-500 -ms-px first:rounded-t-md last:rounded-b-md sm:w-auto sm:first:rounded-s-md sm:mt-0 sm:first:ms-0 sm:first:rounded-se-none sm:last:rounded-es-none sm:last:rounded-e-md dark:bg-neutral-700 dark:border-neutral-700 dark:text-neutral-400"
+                          class="py-2 px-2 inline-flex items-center min-w-fit w-full border border-gray-200text-sm text-gray-500 -ms-px first:rounded-t-md last:rounded-b-md sm:w-auto sm:first:rounded-s-md sm:mt-0 sm:first:ms-0 sm:first:rounded-se-none sm:last:rounded-es-none sm:last:rounded-e-md dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400"
                           >,</span
                         >
                         <input
@@ -502,7 +502,7 @@
                       <!-- Tahun Masuk -->
                       <label
                         for="tahunMasuk"
-                        class="block text-sm font-medium leading-3 text-gray-900"
+                        class="block text-sm font-medium leading-3 text-gray-900 dark:text-neutral-200"
                         >Tahun Masuk</label
                       >
                       <div class="relative mt-1 rounded-md shadow-sm">
@@ -510,7 +510,7 @@
                           type="date"
                           name="tahunMasuk"
                           id="tahunMasuk"
-                          class="block w-full rounded-md border-0 py-1.5 pl-2 pr-1 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                          class="block w-full rounded-md border-0 py-1.5 pl-2 pr-1 dark:bg-neutral-900 dark:text-neutral-200 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                           placeholder="Masukkan Tahun Masuk"
                         />
                       </div>
@@ -518,7 +518,7 @@
                       <!-- Tahun Masuk -->
                       <label
                         for="tahunKeluar"
-                        class="block text-sm font-medium leading-3 text-gray-900"
+                        class="block text-sm font-medium leading-3 text-gray-900 dark:text-neutral-200"
                         >Tahun Keluar</label
                       >
                       <div class="relative mt-1 rounded-md shadow-sm">
@@ -526,7 +526,7 @@
                           type="date"
                           name="tahunKeluar"
                           id="tahunKeluar"
-                          class="block w-full rounded-md border-0 py-1.5 pl-2 pr-1 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                          class="block w-full rounded-md border-0 py-1.5 pl-2 pr-1 dark:bg-neutral-900 dark:text-neutral-200 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                           placeholder="Masukkan Tahun Keluar"
                         />
                       </div>
@@ -534,7 +534,7 @@
                       <!-- Kamar -->
                       <label
                         for="kamar"
-                        class="block text-sm font-medium leading-3 text-gray-900"
+                        class="block text-sm font-medium leading-3 text-gray-900 dark:text-neutral-200"
                         >Kamar</label
                       >
                       <div class="relative mt-1 rounded-md shadow-sm">
@@ -542,7 +542,7 @@
                           type="text"
                           name="kamar"
                           id="kamar"
-                          class="block w-full rounded-md border-0 py-1.5 pl-2 pr-1 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                          class="block w-full rounded-md border-0 py-1.5 pl-2 pr-1 dark:bg-neutral-900 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                           placeholder="Masukkan Kamar"
                         />
                       </div>
@@ -550,7 +550,7 @@
                       <!-- Keterangan -->
                       <label
                         for="keterangan"
-                        class="block text-sm font-medium leading-3 text-gray-900"
+                        class="block text-sm font-medium leading-3 text-gray-900 dark:text-neutral-200"
                         >Keterangan</label
                       >
                       <div class="relative mt-1 rounded-md shadow-sm">
@@ -558,7 +558,7 @@
                           type="text"
                           name="keterangan"
                           id="keterangan"
-                          class="block w-full rounded-md border-0 py-1.5 pl-2 pr-1 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                          class="block w-full rounded-md border-0 py-1.5 pl-2 pr-1 dark:bg-neutral-900 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                           placeholder="Masukkan Keterangan"
                         />
                       </div>
