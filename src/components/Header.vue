@@ -211,13 +211,13 @@
                 </p>
               </div>
               <div class="p-1.5 space-y-0.5">
-                <a
+                <router-link
                   class="flex items-center gap-1 justify-center py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700 dark:focus:text-neutral-300"
-                  href="#"
+                  to="/"
                 >
                   <i class="bx bx-log-out"></i>
                   Log Out
-                </a>
+                </router-link>
               </div>
             </div>
           </div>

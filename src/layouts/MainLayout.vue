@@ -250,5 +250,34 @@
 </template>
 
 <script setup>
+import { onMounted } from "vue";
 import Header from "../components/Header.vue";
+onMounted(() => {
+  const cekRefresh = localStorage.getItem("cekRefresh");
+  if (!cekRefresh) {
+    window.location.reload();
+    localStorage.setItem("cekRefresh", true);
+  }
+  const roomsBtn = document.getElementById("rooms-accordion");
+  const roomsChild = document.getElementById("rooms-accordion-child");
+  const usersBtn = document.getElementById("users-accordion");
+  const usersChild = document.getElementById("users-accordion-child");
+
+  roomsBtn.addEventListener("click", () => {
+    roomsBtn.classList.toggle("active");
+    const isExpanded = roomsChild.getAttribute("aria-expanded") === "true";
+
+    // Toggle nilai aria-expanded
+    roomsChild.setAttribute("aria-expanded", isExpanded ? "false" : "true");
+    roomsChild.classList.toggle("hidden");
+  });
+  usersBtn.addEventListener("click", () => {
+    usersBtn.classList.toggle("active");
+    const isExpanded = usersChild.getAttribute("aria-expanded") === "true";
+
+    // Toggle nilai aria-expanded
+    usersChild.setAttribute("aria-expanded", isExpanded ? "false" : "true");
+    usersChild.classList.toggle("hidden");
+  });
+});
 </script>

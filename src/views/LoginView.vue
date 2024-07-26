@@ -135,6 +135,7 @@
 
 <script setup>
 import { useHead } from "unhead";
+import { onMounted } from "vue";
 
 useHead({
   title: "Login",
@@ -145,5 +146,12 @@ useHead({
         "Silahkan Login untuk mengelola data santri, kamar, dan fasilitas dengan efisien dan terintegrasi dalam sistem Santri Master.",
     },
   ],
+});
+onMounted(() => {
+  const cekRefresh = localStorage.getItem("cekRefresh");
+  if (cekRefresh) {
+    window.location.reload();
+    localStorage.removeItem("cekRefresh");
+  }
 });
 </script>
