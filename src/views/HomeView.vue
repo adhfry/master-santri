@@ -53,7 +53,7 @@
           </p>
           <img
             src="@/assets/img/boy-rocket.png"
-            class="inset-2 ms-32 animate-bounce-slow -rotate-12 absolute w-36"
+            class="inset-2 ms-32 animate-bounce-slow2 -rotate-12 absolute w-36"
             alt=""
           />
         </div>
@@ -120,6 +120,18 @@
 </template>
 
 <script setup>
+import { useHead } from "unhead";
+
+useHead({
+  title: "Home",
+  meta: [
+    {
+      name: "description",
+      content:
+        "Halaman untuk mengelola data santri, kamar, dan fasilitas dengan efisien dan terintegrasi dalam sistem Santri Master.",
+    },
+  ],
+});
 import { ref, computed, onMounted } from "vue";
 import { format, formatDistanceToNow, getHours } from "date-fns";
 import { id as idLocale } from "date-fns/locale";
@@ -142,61 +154,3 @@ onMounted(() => {
   setInterval(updateClock, 60000); // Update setiap menit
 });
 </script>
-
-<style scoped>
-.bg-size-1\/2 {
-  background-size: calc(50% - 20px);
-  background-position-x: 10rem;
-  background-position-y: -1.25rem;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-}
-
-.custom-gradient {
-  background: linear-gradient(
-      135deg,
-      rgba(0, 171, 193, 0.441),
-      rgba(255, 83, 112, 0.286)
-    ),
-    radial-gradient(
-      circle at 30% 30%,
-      rgba(255, 255, 255, 0.6),
-      transparent 40%
-    ),
-    radial-gradient(
-      circle at 70% 70%,
-      rgba(255, 255, 255, 0.6),
-      transparent 40%
-    );
-  background-blend-mode: screen;
-}
-
-@keyframes waveAnimation {
-  0% {
-    transform: translateX(-0.025%);
-  }
-  100% {
-    transform: translateX(30%);
-  }
-}
-@keyframes upDown {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(0.5rem);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
-
-.animate-bounce-slow {
-  animation: upDown 3s ease-in-out infinite;
-}
-.animate-wave {
-  animation: waveAnimation 20s linear infinite;
-  width: 200%;
-  height: 100%;
-}
-</style>
