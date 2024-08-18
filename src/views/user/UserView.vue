@@ -109,6 +109,7 @@
                         </button>
 
                         <button
+                          @click="delModal()"
                           type="button"
                           class="py-1 px-2 inline-flex items-center gap-x-2 text-sm font-medium rounded-md border border-transparent bg-red-100 text-red-800 hover:bg-red-200 focus:outline-none focus:bg-red-200 disabled:opacity-50 disabled:pointer-events-none dark:text-red-500 dark:bg-red-800/30 dark:hover:bg-red-800/20 dark:focus:bg-red-800/20"
                         >
@@ -161,6 +162,7 @@
                         </button>
 
                         <button
+                          @click="delModal()"
                           type="button"
                           class="py-1 px-2 inline-flex items-center gap-x-2 text-sm font-medium rounded-md border border-transparent bg-red-100 text-red-800 hover:bg-red-200 focus:outline-none focus:bg-red-200 disabled:opacity-50 disabled:pointer-events-none dark:text-red-500 dark:bg-red-800/30 dark:hover:bg-red-800/20 dark:focus:bg-red-800/20"
                         >
@@ -179,7 +181,7 @@
     </Card>
     <!-- Modal -->
     <TransitionRoot appear :show="isOpen" as="template">
-      <Dialog as="div" class="relative z-100">
+      <Dialog as="div" class="relative z-[69]">
         <TransitionChild
           as="template"
           enter="duration-300 ease-out"
@@ -589,6 +591,102 @@
         </div>
       </Dialog>
     </TransitionRoot>
+    <TransitionRoot appear :show="isDel" as="template">
+      <Dialog as="div" class="relative z-[69]">
+        <TransitionChild
+          as="template"
+          enter="duration-300 ease-out"
+          enter-from="opacity-0"
+          enter-to="opacity-100"
+          leave="duration-200 ease-in"
+          leave-from="opacity-100"
+          leave-to="opacity-0"
+        >
+          <div class="fixed inset-0 bg-black/25" />
+        </TransitionChild>
+
+        <div class="fixed inset-0 overflow-y-auto">
+          <div
+            class="flex min-h-full items-center justify-center p-4 text-center"
+          >
+            <TransitionChild
+              as="template"
+              enter="duration-300 ease-out"
+              enter-from="opacity-0 scale-95"
+              enter-to="opacity-100 scale-100"
+              leave="duration-200 ease-in"
+              leave-from="opacity-100 scale-100"
+              leave-to="opacity-0 scale-95"
+            >
+              <DialogPanel
+                class="w-full max-w-lg transform overflow-hidden rounded-xl bg-white p-6 text-left align-middle shadow-xl transition-all"
+              >
+                <DialogTitle
+                  as="h3"
+                  class="text-lg font-semibold leading-6 text-gray-900 mb-5"
+                >
+                </DialogTitle>
+                <div class="mt-2">
+                  <div
+                    class="relative flex flex-col bg-white rounded-xl dark:bg-neutral-900"
+                  >
+                    <div class="p-4 sm:p-10 text-center overflow-y-auto">
+                      <!-- Icon -->
+                      <span
+                        class="mb-4 inline-flex justify-center items-center size-[62px] rounded-full border-4 border-yellow-50 bg-yellow-100 text-yellow-500 dark:bg-yellow-700 dark:border-yellow-600 dark:text-yellow-100"
+                      >
+                        <svg
+                          class="shrink-0 size-5"
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          fill="currentColor"
+                          viewBox="0 0 16 16"
+                        >
+                          <path
+                            d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
+                          />
+                        </svg>
+                      </span>
+                      <!-- End Icon -->
+
+                      <h3
+                        id="hs-sign-out-alert-small-window-label"
+                        class="mb-2 text-2xl font-bold text-gray-800 dark:text-neutral-200"
+                      >
+                        Konfirmasi
+                      </h3>
+                      <p class="text-gray-500 dark:text-neutral-500">
+                        Apakah anda yakin untuk menghapus user [user]
+                      </p>
+
+                      <div class="mt-6 grid gap-y-2">
+                        <button
+                          type="button"
+                          class="py-2.5 px-4 w-full inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-red-200 bg-red-200 text-red-800 shadow-sm hover:bg-red-300 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:bg-red-50 dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:hover:bg-neutral-800 dark:focus:bg-neutral-800"
+                        >
+                          Ya, Saya Yakin
+                        </button>
+                        <button
+                          @click="isDel = false"
+                          type="button"
+                          class="py-2.5 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
+                          data-hs-overlay="#hs-sign-out-alert-small-window"
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mt-2 justify-end flex gap-2"></div>
+              </DialogPanel>
+            </TransitionChild>
+          </div>
+        </div>
+      </Dialog>
+    </TransitionRoot>
   </div>
 </template>
 
@@ -610,7 +708,7 @@ import {
 } from "@headlessui/vue";
 import { useToast } from "vue-toastification";
 import HSOverlay from "@preline/overlay";
-
+const isDel = ref(false);
 const users = ref([]);
 //** Modal */
 const isOpen = ref(false);
@@ -620,6 +718,9 @@ function closeModal() {
 function openModal() {
   isOpen.value = true;
 }
+const delModal = (userId) => {
+  isDel.value = true;
+};
 //** End Modal */
 const errors = ref([]);
 const initialForm = {

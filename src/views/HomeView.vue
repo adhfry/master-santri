@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      class="relative w-full h-[7.525rem] overflow-hidden rounded-xl shadow-sm"
+      class="relative w-full h-[7.525rem] overflow-hidden rounded-xl shadow-sm font"
     >
       <div
         class="absolute inset-0 bg-[url('@/assets/img/wave.png')] bg-cover bg-size-1/2"

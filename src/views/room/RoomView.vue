@@ -3,10 +3,10 @@
     <Card>
       <template #header-card> Data Kamar Santri Al-Hidayah 2 </template>
       <template #title-card>
-        <div class="text-end justify-end me-5">
+        <div class="flex justify-end me-5">
           <button
             type="button"
-            class="py-2 px-2 inline-flex rounded-md items-center gap-x-2 text-sm font-medium border border-transparent bg-blue-100 text-blue-800 hover:bg-blue-200 focus:outline-none focus:bg-blue-200 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-400 dark:bg-blue-800/30 dark:hover:bg-blue-800/20 dark:focus:bg-blue-800/20"
+            class="py-2 px-4 inline-flex rounded-md items-center gap-x-2 text-sm font-medium border border-transparent bg-blue-100 text-blue-800 hover:bg-blue-200 focus:outline-none focus:bg-blue-200 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-400 dark:bg-blue-800/30 dark:hover:bg-blue-800/20 dark:focus:bg-blue-800/20"
             @click="openAddKamar"
           >
             <i class="bx bx-user-plus"></i> Data Kamar
@@ -16,33 +16,32 @@
       <div v-if="kamars.length > 1">
         <div class="flex flex-col">
           <div class="-m-1.5 overflow-x-auto">
-            <div class="p-1.5 min-w-full flex align-middle gap-4">
-              <div class="overflow-x-auto rounded-md w-2/5">
+            <div
+              class="p-1.5 min-w-full flex flex-col lg:flex-row align-middle gap-4"
+            >
+              <!-- Tabel Kamar -->
+              <div class="overflow-x-auto rounded-md w-full lg:w-2/5">
                 <table
                   class="min-w-full divide-y border rounded-md divide-gray-200 dark:divide-neutral-700"
                 >
                   <thead>
                     <tr>
                       <th
-                        scope="col"
                         class="ps-4 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500"
                       >
                         No
                       </th>
                       <th
-                        scope="col"
                         class="px-3 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500"
                       >
                         Kamar
                       </th>
                       <th
-                        scope="col"
                         class="px-1 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500"
                       >
                         Kapasitas
                       </th>
                       <th
-                        scope="col"
                         class="px-4 py-3 text-center flex justify-center text-xs font-medium text-gray-500 uppercase dark:text-neutral-500"
                       >
                         Action
@@ -68,9 +67,18 @@
                         {{ kamar.kamar }}
                       </td>
                       <td
-                        class="px-1 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200"
+                        class="px-1 py-4 whitespace-nowrap text-sm"
+                        :class="{
+                          'text-red-500':
+                            getOccupied(kamar) === kamar.kapasitas,
+                          'text-gray-800 dark:text-neutral-200':
+                            getOccupied(kamar) !== kamar.kapasitas,
+                        }"
                       >
                         {{ `${getOccupied(kamar)}/${kamar.kapasitas}` }}
+                        <span class="text-red-500">{{
+                          getOccupied(kamar) === kamar.kapasitas ? "Penuh" : ""
+                        }}</span>
                       </td>
                       <td
                         class="px-4 py-4 flex justify-center gap-2 whitespace-nowrap text-center text-sm font-medium"
@@ -89,7 +97,6 @@
                         >
                           <i class="fa-regular fa-pen-to-square"></i>
                         </button>
-
                         <button
                           @click="deleteKamar(kamar.id)"
                           type="button"
@@ -102,8 +109,9 @@
                   </tbody>
                 </table>
               </div>
+              <!-- Detail Kamar -->
               <div
-                class="overflow-x-auto border rounded-md w-3/5"
+                class="overflow-x-auto border rounded-md w-full lg:w-3/5"
                 v-if="selectedKamar != null"
               >
                 <div class="min-w-full divide-gray-200 dark:divide-neutral-700">
@@ -128,7 +136,7 @@
                       >
                     </h2>
                     <h2 class="text-sm font-semibold">
-                      Kosong:
+                      Kasur Kosong:
                       <span
                         :class="{
                           'text-red-500 font-normal bg-red-100 px-2 py-1 rounded-xl':
@@ -148,47 +156,47 @@
                   </div>
                   <!-- Denah -->
                   <div
-                    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 px-6 py-3 text-sm font-normal"
+                    class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 px-6 py-3 text-sm font-normal"
                   >
                     <div
                       v-for="(slot, index) in getSlots(selectedKamar)"
                       :key="index"
                       :class="[
-                        'row-span-3 rounded-md flex justify-center items-center cursor-pointer',
+                        'row-span-3 rounded-md flex px-4 gap-1 items-center',
                         slot
-                          ? 'bg-blue-200/50 hover:bg-blue-200/75'
-                          : 'bg-red-200/50 hover:bg-red-200/75',
+                          ? 'bg-blue-200/50 hover:bg-blue-200/75 cursor-pointer'
+                          : 'bg-red-200/50 hover:bg-red-200/75 cursor-not-allowed',
                       ]"
                       @click="
                         slot ? openUserRoom(slot, selectedKamar.kamar) : null
                       "
                     >
-                      {{ slot || "Kosong" }}
+                      <i class="bx bxs-bed"></i>{{ slot || "Kosong" }}
                     </div>
                   </div>
-                  <div></div>
                 </div>
               </div>
+              <!-- Pesan kosong -->
               <div
                 v-if="selectedKamar === null"
-                class="overflow-x-auto rounded-md w-3/5"
+                class="overflow-x-auto rounded-md w-full lg:w-3/5"
               >
                 <div class="min-w-full divide-gray-200 dark:divide-neutral-700">
                   <div
                     class="h-10 rounded-md border flex justify-around items-center ps-5"
                   >
-                    <span class=""
+                    <span
                       >Klik tombol
-                      <strong
-                        ><button
+                      <strong>
+                        <button
                           type="button"
                           class="py-1 px-2 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-100 text-blue-800 hover:bg-blue-200 focus:outline-none focus:bg-blue-200 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-400 dark:bg-blue-800/30 dark:hover:bg-blue-800/20 dark:focus:bg-blue-800/20"
                         >
                           <i class="fa-regular fa-eye"></i>
                         </button>
                       </strong>
-                      pada salah satu kamar untuk melihat isi kamar</span
-                    >
+                      pada salah satu kamar untuk melihat isi kamar
+                    </span>
                   </div>
                 </div>
               </div>
@@ -196,11 +204,11 @@
           </div>
         </div>
       </div>
-      <!--  -->
     </Card>
+
     <!-- Modal -->
     <TransitionRoot appear :show="isOpen" as="template">
-      <Dialog as="div" class="relative z-100">
+      <Dialog as="div" class="relative z-[69]">
         <TransitionChild
           as="template"
           enter="duration-300 ease-out"
@@ -234,6 +242,7 @@
                   class="text-lg font-semibold leading-6 text-gray-900 mb-5"
                 >
                   <span v-if="addKamarModal">Input Data Kamar</span>
+                  <span v-if="editKamarModal">Edit Data Kamar</span>
                   <span v-if="userDataModal"
                     >Data {{ selectedSantri.nama }}</span
                   >
@@ -337,7 +346,7 @@
                         :class="[
                           'inline-flex justify-center items-center rounded-md border border-transparent  px-4 py-2 text-sm font-medium   focus:outline-none focus-visible:ring-2  focus-visible:ring-offset-2',
                           newKamarVal === 'selected'
-                            ? 'bg-gray-100 hover:bg-gray-200 focus-visible:ring-gray-500 text-gray-900'
+                            ? 'bg-gray-100  text-gray-900 cursor-not-allowed'
                             : 'bg-blue-100 hover:bg-blue-200 focus-visible:ring-blue-500 text-blue-900',
                         ]"
                         @click="updateUserKamar"
@@ -349,7 +358,7 @@
                         ></i>
                         {{
                           newKamarVal === "selected"
-                            ? "Wajib memilih kamar baru!"
+                            ? "Pilih Kamar Baru Terlebih Dahulu!"
                             : "Simpan Perubahan"
                         }}
                       </button>
@@ -417,6 +426,169 @@
                       </button>
                     </div>
                   </form>
+                  <!-- editKamarModal -->
+                  <form
+                    @submit.prevent=""
+                    v-if="editKamarModal"
+                    class="grid grid-cols-2 justify-between gap-3"
+                  >
+                    <div class="max-w-lg space-y-3 col-span-1">
+                      <!-- Kamar -->
+                      <label
+                        for="kamar"
+                        class="block text-sm font-medium leading-3 text-gray-900"
+                        >Kamar</label
+                      >
+                      <div class="relative mt-1 rounded-md shadow-sm">
+                        <input
+                          v-model="form.kamar"
+                          type="text"
+                          name="kamar"
+                          id="kamar"
+                          class="block w-full rounded-md border-0 py-1.5 pl-2 pr-1 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                          placeholder="Masukkan Kamar"
+                        />
+                      </div>
+                      <!-- End Kamar -->
+                    </div>
+                    <!-- Sebelah Kanan -->
+                    <div class="max-w-lg space-y-3 col-span-1">
+                      <!-- Kapasitas -->
+                      <label
+                        for="kapasitas"
+                        class="block text-sm font-medium leading-3 text-gray-900"
+                        >Kapasitas</label
+                      >
+                      <div class="relative mt-1 rounded-md shadow-sm">
+                        <input
+                          v-model="form.kapasitas"
+                          type="number"
+                          name="kapasitas"
+                          id="kapasitas"
+                          class="block w-full rounded-md border-0 py-1.5 pl-2 pr-1 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                          placeholder="Masukkan Kapasitas"
+                        />
+                      </div>
+                      <!-- End Kapasitas -->
+                    </div>
+                    <div class="mt-4 justify-end flex col-span-2 gap-2">
+                      <button
+                        type="button"
+                        class="inline-flex justify-center items-center rounded-md border border-transparent bg-gray-100 px-4 py-2 text-sm font-medium text-gray-900 hover:bg-gray-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-500 focus-visible:ring-offset-2"
+                        @click="closeModal"
+                      >
+                        <i class="bx bx-log-out-circle me-1"></i> Batal
+                      </button>
+                      <button
+                        type="button"
+                        class="inline-flex justify-center items-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                        @click="addKamar"
+                      >
+                        <i class="bx bx-save me-1"></i> Simpan
+                      </button>
+                    </div>
+                  </form>
+                </div>
+
+                <div class="mt-2 justify-end flex gap-2"></div>
+              </DialogPanel>
+            </TransitionChild>
+          </div>
+        </div>
+      </Dialog>
+    </TransitionRoot>
+    <TransitionRoot appear :show="isDel" as="template">
+      <Dialog as="div" class="relative z-[69]">
+        <TransitionChild
+          as="template"
+          enter="duration-300 ease-out"
+          enter-from="opacity-0"
+          enter-to="opacity-100"
+          leave="duration-200 ease-in"
+          leave-from="opacity-100"
+          leave-to="opacity-0"
+        >
+          <div class="fixed inset-0 bg-black/25" />
+        </TransitionChild>
+
+        <div class="fixed inset-0 overflow-y-auto">
+          <div
+            class="flex min-h-full items-center justify-center p-4 text-center"
+          >
+            <TransitionChild
+              as="template"
+              enter="duration-300 ease-out"
+              enter-from="opacity-0 scale-95"
+              enter-to="opacity-100 scale-100"
+              leave="duration-200 ease-in"
+              leave-from="opacity-100 scale-100"
+              leave-to="opacity-0 scale-95"
+            >
+              <DialogPanel
+                class="w-full max-w-lg transform overflow-hidden rounded-xl bg-white p-6 text-left align-middle shadow-xl transition-all"
+              >
+                <DialogTitle
+                  as="h3"
+                  class="text-lg font-semibold leading-6 text-gray-900 mb-5"
+                >
+                  <span v-if="addKamarModal">Input Data Kamar</span>
+                  <span v-if="userDataModal"
+                    >Data {{ selectedSantri.nama }}</span
+                  >
+                </DialogTitle>
+                <div class="mt-2">
+                  <div
+                    class="relative flex flex-col bg-white rounded-xl dark:bg-neutral-900"
+                  >
+                    <div class="p-4 sm:p-10 text-center overflow-y-auto">
+                      <!-- Icon -->
+                      <span
+                        class="mb-4 inline-flex justify-center items-center size-[62px] rounded-full border-4 border-yellow-50 bg-yellow-100 text-yellow-500 dark:bg-yellow-700 dark:border-yellow-600 dark:text-yellow-100"
+                      >
+                        <svg
+                          class="shrink-0 size-5"
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          fill="currentColor"
+                          viewBox="0 0 16 16"
+                        >
+                          <path
+                            d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
+                          />
+                        </svg>
+                      </span>
+                      <!-- End Icon -->
+
+                      <h3
+                        id="hs-sign-out-alert-small-window-label"
+                        class="mb-2 text-2xl font-bold text-gray-800 dark:text-neutral-200"
+                      >
+                        Konfirmasi
+                      </h3>
+                      <p class="text-gray-500 dark:text-neutral-500">
+                        Apakah anda yakin untuk menghapus kamar
+                        {{ selectedDelKamar }}
+                      </p>
+
+                      <div class="mt-6 grid gap-y-2">
+                        <button
+                          type="button"
+                          class="py-2.5 px-4 w-full inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-red-200 bg-red-200 text-red-800 shadow-sm hover:bg-red-300 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:bg-red-50 dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:hover:bg-neutral-800 dark:focus:bg-neutral-800"
+                        >
+                          Ya, Saya Yakin
+                        </button>
+                        <button
+                          @click="isDel = false"
+                          type="button"
+                          class="py-2.5 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
+                          data-hs-overlay="#hs-sign-out-alert-small-window"
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
                 <div class="mt-2 justify-end flex gap-2"></div>
@@ -457,6 +629,7 @@ const kamars = ref([]);
 const newKamar = ref("selected");
 const users = ref([]);
 const selectedKamar = ref(null);
+const selectedDelKamar = ref(null);
 const selectedPindah = ref(null);
 const selectedSantri = ref({});
 
@@ -466,7 +639,7 @@ const newKamarVal = computed(() => newKamar.value);
 kamars.value = [
   { id: 1, kamar: "Semangka", kapasitas: 49 },
   { id: 2, kamar: "Durian", kapasitas: 20 },
-  { id: 3, kamar: "Apel", kapasitas: 8 },
+  { id: 3, kamar: "Apel", kapasitas: 9 },
 ];
 users.value = [
   { id: 1, nama: "Ahda", nama_lengkap: "Ahda Firly Barori" },
@@ -485,7 +658,7 @@ users.value = [
   { id: 21, nama: "Aisyah", nama_lengkap: "Sayyidatun Aisyah" },
   { id: 22, nama: "Alfred", nama_lengkap: "Alfred Setiadi" },
   { id: 23, nama: "Diana", nama_lengkap: "Diana Camelia" },
-  { id: 24, nama: "Rendi", nama_lengkap: "Rendi Susanto" },
+  { id: 24, nama: "Muhammad", nama_lengkap: "Rendi Susanto" },
 ];
 // analogikan kamar id menampung data id user
 const userKamarMapping = ref({
@@ -499,10 +672,16 @@ const viewKamar = (kamarId) => {
 };
 
 const editKamar = (kamarId) => {
+  isOpen.value = true;
+  editKamarModal.value = true;
+  selectedKamar.value = kamars.value.find((kamar) => kamar.id === kamarId);
+  form.value = selectedKamar.value;
   console.log(`Edit kamar with id: ${kamarId}`);
 };
 
 const deleteKamar = (kamarId) => {
+  isDel.value = true;
+  selectedDelKamar.value = kamarId;
   console.log(`Delete kamar with id: ${kamarId}`);
 };
 
@@ -585,8 +764,10 @@ const closeAddKamar = () => {
 };
 //** Modal */
 const isOpen = ref(false);
+const isDel = ref(false);
 function closeModal() {
   newKamar.value = "selected";
+  editKamarModal.value = false;
   closeUserRoom();
   closeAddKamar();
   isOpen.value = false;
