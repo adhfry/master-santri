@@ -256,7 +256,7 @@ const logout = () => {
   localStorage.removeItem("user");
   localStorage.removeItem("access_token");
   localStorage.removeItem("token_type");
-  router.push("/login");
+  router.push("/");
 };
 
 // untuk jam

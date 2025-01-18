@@ -791,14 +791,12 @@ const deleteData = async () => {
   await axios
     .delete(`/santris/${userSelected.value.id}/delete`)
     .then((res) => {
-      console.log(res);
       toast.success("Berhasil menghapus data!");
       getdata();
       isDel.value = false;
     })
     .catch((err) => {
       toast.error("Gagal menghapus data!");
-      console.log(err);
     });
 };
 const submitForm = async () => {
@@ -806,7 +804,6 @@ const submitForm = async () => {
     await axios
       .put(`/santris/${userSelected.value.id}`, form.value)
       .then((res) => {
-        console.log(res);
         errors.value = [];
         form.value = { ...initialForm };
         toast.success("Berhasil mengedit data!");
@@ -818,13 +815,11 @@ const submitForm = async () => {
       })
       .catch((err) => {
         toast.error("Gagal mengubah data!");
-        console.log(err);
       });
   } else {
     await axios
       .post("/insert", form.value)
       .then((res) => {
-        console.log(res);
         errors.value = [];
         form.value = { ...initialForm };
         toast.success("Berhasil menambahkan data baru!");
@@ -836,7 +831,6 @@ const submitForm = async () => {
       .catch((err) => {
         toast.error("Gagal menambahkan data baru!");
         errors.value = err.response.data.errors;
-        console.log(err);
       });
   }
 };
@@ -846,11 +840,8 @@ const getDataKamar = async () => {
     .get("/kamars")
     .then((res) => {
       kamars.value = res.data;
-      console.log(res.data);
     })
-    .catch((err) => {
-      console.log(err);
-    });
+    .catch((err) => {});
 };
 
 const filteredKamars = computed(() => {
@@ -863,14 +854,11 @@ const getdata = () => {
     .get("/santris")
     .then((res) => {
       users.value = res.data;
-      console.log(res.data);
       nextTick(() => {
         $("#example").DataTable();
       });
     })
-    .catch((err) => {
-      console.log(err);
-    });
+    .catch((err) => {});
 };
 
 const editForm = (user) => {
@@ -878,12 +866,10 @@ const editForm = (user) => {
   const openBtn = new HSOverlay(document.querySelector("#modal-gg"));
   openBtn.addEventListener("click", () => {
     HSOverlay.open("#modal-edit");
-    console.log("kesini");
   });
 };
 
 const showModal = () => {
-  console.log("kesini");
   const openBtn = document.querySelector("#openBtn");
 
   openBtn.addEventListener("click", () => {

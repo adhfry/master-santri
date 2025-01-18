@@ -159,7 +159,6 @@ const dataForm = ref({
 const login = async () => {
   try {
     const response = await axios.post("/login", dataForm.value);
-    console.log(response);
     // set local storage for access_token, token_type, user
     localStorage.setItem("access_token", response.data.access_token);
     localStorage.setItem("token_type", response.data.token_type);
@@ -168,7 +167,7 @@ const login = async () => {
       router.push("/home");
     }
   } catch (error) {
-    console.log(error);
+    .log(error);
   }
 };
 

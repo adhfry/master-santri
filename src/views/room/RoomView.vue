@@ -746,7 +746,6 @@ const updateUserKamar = async () => {
     (u) => u.nama_panggilan === selectedSantri.value.nama_panggilan
   ).id;
   const kamarBaru = newKamarVal.value;
-  console.log(userId, kamarBaru);
 
   const response = await axios.get(`/update/${userId}/${kamarBaru}`);
   if (response.status === 200) {
