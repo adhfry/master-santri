@@ -143,7 +143,7 @@ const now = ref(new Date());
 const updateClock = () => {
   now.value = new Date();
 };
-
+const dataUser = ref({});
 // Sapaan berdasarkan waktu
 const greeting = computed(() => {
   const hour = getHours(now.value);
@@ -154,6 +154,8 @@ const greeting = computed(() => {
 });
 
 onMounted(() => {
+  // get user from localstorage
+
   setInterval(updateClock, 60000); // Update setiap menit
 });
 </script>

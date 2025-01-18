@@ -13,7 +13,7 @@
           </button>
         </div>
       </template>
-      <div v-if="kamars.length > 1">
+      <div v-if="kamars.length">
         <div class="flex flex-col">
           <div class="-m-1.5 overflow-x-auto">
             <div
@@ -64,7 +64,7 @@
                       <td
                         class="px-3 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200"
                       >
-                        {{ kamar.kamar }}
+                        {{ kamar.nama_kamar }}
                       </td>
                       <td
                         class="px-1 py-4 whitespace-nowrap text-sm"
@@ -120,7 +120,9 @@
                   >
                     <h2 class="font-semibold text-sm">
                       Kamar:
-                      <span class="font-normal">{{ selectedKamar.kamar }}</span>
+                      <span class="font-normal">{{
+                        selectedKamar.nama_kamar
+                      }}</span>
                     </h2>
                     <h2 class="text-sm font-semibold">
                       Kapasitas:
@@ -168,7 +170,9 @@
                           : 'bg-red-200/50 hover:bg-red-200/75 cursor-not-allowed',
                       ]"
                       @click="
-                        slot ? openUserRoom(slot, selectedKamar.kamar) : null
+                        slot
+                          ? openUserRoom(slot, selectedKamar.nama_kamar)
+                          : null
                       "
                     >
                       <i class="bx bxs-bed"></i>{{ slot || "Kosong" }}
@@ -323,7 +327,7 @@
                             :value="kamar.id"
                           >
                             {{
-                              `${kamar.kamar} - ${getOccupied(kamar)}/${
+                              `${kamar.nama_kamar} - ${getOccupied(kamar)}/${
                                 kamar.kapasitas
                               }`
                             }}
@@ -379,7 +383,7 @@
                       >
                       <div class="relative mt-1 rounded-md shadow-sm">
                         <input
-                          v-model="form.kamar"
+                          v-model="form.nama_kamar"
                           type="text"
                           name="kamar"
                           id="kamar"
@@ -420,7 +424,7 @@
                       <button
                         type="button"
                         class="inline-flex justify-center items-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                        @click="addKamar"
+                        @click="submitForm()"
                       >
                         <i class="bx bx-save me-1"></i> Simpan
                       </button>
@@ -441,7 +445,7 @@
                       >
                       <div class="relative mt-1 rounded-md shadow-sm">
                         <input
-                          v-model="form.kamar"
+                          v-model="form.nama_kamar"
                           type="text"
                           name="kamar"
                           id="kamar"
@@ -636,35 +640,15 @@ const selectedSantri = ref({});
 const pindah = computed(() => selectedPindah.value);
 const newKamarVal = computed(() => newKamar.value);
 
-kamars.value = [
-  { id: 1, kamar: "Semangka", kapasitas: 49 },
-  { id: 2, kamar: "Durian", kapasitas: 20 },
-  { id: 3, kamar: "Apel", kapasitas: 9 },
-];
-users.value = [
-  { id: 1, nama: "Ahda", nama_lengkap: "Ahda Firly Barori" },
-  { id: 2, nama: "Rahma", nama_lengkap: "Rahma Indah" },
-  { id: 3, nama: "Fikri", nama_lengkap: "Fikri Hidayat" },
-  { id: 4, nama: "Sofia", nama_lengkap: "Sofia Permatasari" },
-  { id: 5, nama: "Ayu", nama_lengkap: "Ayu Syarifah" },
-  { id: 13, nama: "Fadil", nama_lengkap: "Fadil Zaini" },
-  { id: 14, nama: "Aldo", nama_lengkap: "Aldo Wijaya" },
-  { id: 15, nama: "Rina", nama_lengkap: "Rina Sari" },
-  { id: 16, nama: "Zainal", nama_lengkap: "Zainal Arifin" },
-  { id: 17, nama: "Yuliana", nama_lengkap: "Yuliana Kartika Sari" },
-  { id: 18, nama: "Rafi", nama_lengkap: "Rafi Nur Maulana" },
-  { id: 19, nama: "Vivian", nama_lengkap: "Vivian Zaskia" },
-  { id: 20, nama: "Rizky", nama_lengkap: "Rizky Yudha" },
-  { id: 21, nama: "Aisyah", nama_lengkap: "Sayyidatun Aisyah" },
-  { id: 22, nama: "Alfred", nama_lengkap: "Alfred Setiadi" },
-  { id: 23, nama: "Diana", nama_lengkap: "Diana Camelia" },
-  { id: 24, nama: "Muhammad", nama_lengkap: "Rendi Susanto" },
-];
 // analogikan kamar id menampung data id user
-const userKamarMapping = ref({
-  1: [1, 2, 3, 4, 5],
-  2: [13, 14, 15, 16, 17],
-  3: [18, 19, 20, 21, 22, 23, 24, 1],
+const userKamarMapping = computed(() => {
+  return users.value.reduce((mapping, user) => {
+    if (!mapping[user.kamar_id]) {
+      mapping[user.kamar_id] = [];
+    }
+    mapping[user.kamar_id].push(user.id);
+    return mapping;
+  }, {});
 });
 
 const viewKamar = (kamarId) => {
@@ -688,16 +672,20 @@ const deleteKamar = (kamarId) => {
 const getSantrisInKamar = (kamarId) => {
   return (
     userKamarMapping.value[kamarId]?.map((userId) => {
-      return users.value.find((user) => user.id === userId)?.nama || "Kosong";
+      return (
+        users.value.find((user) => user.id === userId)?.nama_panggilan ||
+        "Kosong"
+      );
     }) || []
   );
 };
 
 const availableKamars = computed(() => {
   return kamars.value.filter((kamar) => {
-    const userCount = userKamarMapping.value[kamar.id].length || 0;
+    const userCount = userKamarMapping.value[kamar.id]?.length || 0;
     return (
-      kamar.kamar !== selectedSantri.value.kamar && userCount < kamar.kapasitas
+      kamar.nama_kamar !== selectedSantri.value.kamar_id &&
+      userCount < kamar.kapasitas
     );
   });
 });
@@ -719,7 +707,7 @@ const isFull = (kamar) => getOccupied(kamar) >= kamar.kapasitas;
 
 const openUserRoom = (nama, kamar) => {
   // get data from nama
-  const user = users.value.find((u) => u.nama === nama);
+  const user = users.value.find((u) => u.nama_panggilan === nama);
   selectedSantri.value = { ...user, kamar };
   selectedPindah.value = kamar;
   userDataModal.value = true;
@@ -731,26 +719,40 @@ const closeUserRoom = () => {
   selectedSantri.value = {};
 };
 
-const updateUserKamar = () => {
-  const oldKamarId = kamars.value.find(
-    (k) => k.kamar === selectedSantri.value.kamar
-  ).id;
+// const updateUserKamar = () => {
+//   const oldKamarId = kamars.value.find(
+//     (k) => k.kamar === selectedSantri.value.kamar
+//   ).id;
+//   const userId = users.value.find(
+//     (u) => u.nama === selectedSantri.value.nama
+//   ).id;
+
+//   // Remove santri from old kamar
+//   userKamarMapping.value[oldKamarId] = userKamarMapping.value[
+//     oldKamarId
+//   ].filter((id) => id !== userId);
+
+//   // Add santri to new kamar
+//   if (!userKamarMapping.value[newKamar.value]) {
+//     userKamarMapping.value[newKamar.value] = [];
+//   }
+//   userKamarMapping.value[newKamar.value].push(userId);
+
+//   closeModal();
+// };
+
+const updateUserKamar = async () => {
   const userId = users.value.find(
-    (u) => u.nama === selectedSantri.value.nama
+    (u) => u.nama_panggilan === selectedSantri.value.nama_panggilan
   ).id;
+  const kamarBaru = newKamarVal.value;
+  console.log(userId, kamarBaru);
 
-  // Remove santri from old kamar
-  userKamarMapping.value[oldKamarId] = userKamarMapping.value[
-    oldKamarId
-  ].filter((id) => id !== userId);
-
-  // Add santri to new kamar
-  if (!userKamarMapping.value[newKamar.value]) {
-    userKamarMapping.value[newKamar.value] = [];
+  const response = await axios.get(`/update/${userId}/${kamarBaru}`);
+  if (response.status === 200) {
+    getdata();
+    closeModal();
   }
-  userKamarMapping.value[newKamar.value].push(userId);
-
-  closeModal();
 };
 
 const openAddKamar = () => {
@@ -761,6 +763,7 @@ const openAddKamar = () => {
 const closeAddKamar = () => {
   form.value = { ...initialForm };
   addKamarModal.value = false;
+  isOpen.value = false;
 };
 //** Modal */
 const isOpen = ref(false);
@@ -778,7 +781,7 @@ function openModal() {
 //** End Modal */
 const errors = ref([]);
 const initialForm = {
-  kamar: null,
+  nama_kamar: null,
   kapasitas: null,
 };
 
@@ -789,12 +792,16 @@ const form = ref({ ...initialForm });
 const toast = useToast();
 const submitForm = async () => {
   await axios
-    .post("/kamar", form.value)
+    .post("/kamars", form.value)
     .then((res) => {
       console.log(res);
       errors.value = [];
       form.value = { ...initialForm };
-      toast.success("Berhasil menambahkan data baru!");
+      if (res.status === 200) {
+        toast.success("Berhasil menambahkan data baru!");
+        getdata();
+        closeAddKamar();
+      }
     })
     .catch((err) => {
       toast.error("Gagal menambahkan data baru!");
@@ -805,12 +812,21 @@ const submitForm = async () => {
 
 const getdata = () => {
   axios
-    .get("/kamar")
+    .get("/kamars")
     .then((res) => {
-      kamars.value = res.data.data;
+      kamars.value = res.data;
       nextTick(() => {
         $("#example").DataTable();
       });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  axios
+    .get("/santris")
+    .then((res) => {
+      users.value = res.data;
+      console.log(res.data);
     })
     .catch((err) => {
       console.log(err);

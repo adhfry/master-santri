@@ -207,7 +207,7 @@
                 <p
                   class="text-sm font-medium text-gray-800 dark:text-neutral-200"
                 >
-                  Ustadz@santri.com
+                  {{ dataUser.email }}
                 </p>
               </div>
               <div class="p-1.5 space-y-0.5">
@@ -256,8 +256,10 @@ const formattedTime = computed(() => {
 const formattedDate = computed(() => {
   return format(now.value, "EEEE, dd MMMM yyyy", { locale: idLocale });
 });
-
+const dataUser = ref({});
 onMounted(() => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  if (user) dataUser.value = user;
   setInterval(updateClock, 1000);
 });
 </script>

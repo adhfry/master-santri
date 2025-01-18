@@ -13,7 +13,7 @@
           </button>
         </div>
       </template>
-      <div v-if="users.length < 1">
+      <div v-if="users.length">
         <div class="flex flex-col">
           <div class="-m-1.5 overflow-x-auto">
             <div class="p-1.5 min-w-full inline-block align-middle">
@@ -64,107 +64,57 @@
                   <tbody
                     class="divide-y divide-gray-200 dark:divide-neutral-700"
                   >
-                    <tr class="hover:bg-slate-100 dark:hover:bg-slate-900">
+                    <tr
+                      v-for="(user, index) in users"
+                      :key="user.id"
+                      class="hover:bg-slate-100 dark:hover:bg-slate-900"
+                    >
                       <td
-                        class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200"
+                        class="px-6 py-4 text-sm font-medium text-gray-800 dark:text-neutral-200"
                       >
-                        1
+                        {{ index + 1 }}
                       </td>
                       <td
-                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200"
+                        class="px-6 py-4 text-sm text-gray-800 dark:text-neutral-200"
                       >
-                        Ahda Firly Barori
+                        {{ user.nama_lengkap }}
                       </td>
                       <td
-                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200"
+                        class="px-6 py-4 text-sm text-gray-800 dark:text-neutral-200"
                       >
-                        3529012101050002
+                        {{ user.nik }}
                       </td>
                       <td
-                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200"
+                        class="px-6 py-4 text-sm text-gray-800 dark:text-neutral-200"
                       >
-                        john@site.com
+                        {{ user.email }}
                       </td>
                       <td
-                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200"
+                        class="px-6 py-4 text-sm text-gray-800 dark:text-neutral-200"
                       >
-                        JL. Diponegoro 109 B, Bangselok
-                      </td>
-                      <td
-                        class="px-6 py-4 flex gap-2 whitespace-nowrap text-center text-sm font-medium"
-                      >
-                        <button
-                          @click="openModal"
-                          type="button"
-                          class="py-1 px-2 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-100 text-blue-800 hover:bg-blue-200 focus:outline-none focus:bg-blue-200 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-400 dark:bg-blue-800/30 dark:hover:bg-blue-800/20 dark:focus:bg-blue-800/20"
-                        >
-                          <i class="fa-regular fa-eye"></i>
-                        </button>
-                        <button
-                          @click="openModal"
-                          type="button"
-                          class="py-1 px-2 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-yellow-100 text-yellow-800 hover:bg-yellow-200 focus:outline-none focus:bg-yellow-200 disabled:opacity-50 disabled:pointer-events-none dark:text-yellow-500 dark:bg-yellow-800/30 dark:hover:bg-yellow-800/20 dark:focus:bg-yellow-800/20"
-                        >
-                          <i class="fa-regular fa-pen-to-square"></i>
-                        </button>
-
-                        <button
-                          @click="delModal()"
-                          type="button"
-                          class="py-1 px-2 inline-flex items-center gap-x-2 text-sm font-medium rounded-md border border-transparent bg-red-100 text-red-800 hover:bg-red-200 focus:outline-none focus:bg-red-200 disabled:opacity-50 disabled:pointer-events-none dark:text-red-500 dark:bg-red-800/30 dark:hover:bg-red-800/20 dark:focus:bg-red-800/20"
-                        >
-                          <i class="bx bx-trash"></i>
-                        </button>
-                      </td>
-                    </tr>
-                    <tr class="hover:bg-slate-100 dark:hover:bg-slate-900">
-                      <td
-                        class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200"
-                      >
-                        2
-                      </td>
-                      <td
-                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200"
-                      >
-                        Hairus S.
-                      </td>
-                      <td
-                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200"
-                      >
-                        35290121010501214
-                      </td>
-                      <td
-                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200"
-                      >
-                        hairus@gmail.com
-                      </td>
-                      <td
-                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200"
-                      >
-                        Kolor, Sumenep
+                        {{ user.alamat }}
                       </td>
                       <td
                         class="px-6 py-4 flex gap-2 whitespace-nowrap text-center text-sm font-medium"
                       >
                         <button
+                          @click="openModal(user)"
                           type="button"
-                          class="py-1 px-2 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-100 text-blue-800 hover:bg-blue-200 focus:outline-none focus:bg-blue-200 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-400 dark:bg-blue-800/30 dark:hover:bg-blue-800/20 dark:focus:bg-blue-800/20"
-                          @click="openModal"
+                          class="py-1 px-2 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-100 text-blue-800 hover:bg-blue-200 focus:outline-none"
                         >
                           <i class="fa-regular fa-eye"></i>
                         </button>
                         <button
-                          @click="openModal"
+                          @click="openEditModal(user)"
                           type="button"
-                          class="py-1 px-2 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-yellow-100 text-yellow-800 hover:bg-yellow-200 focus:outline-none focus:bg-yellow-200 disabled:opacity-50 disabled:pointer-events-none dark:text-yellow-500 dark:bg-yellow-800/30 dark:hover:bg-yellow-800/20 dark:focus:bg-yellow-800/20"
+                          class="py-1 px-2 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-yellow-100 text-yellow-800 hover:bg-yellow-200 focus:outline-none"
                         >
                           <i class="fa-regular fa-pen-to-square"></i>
                         </button>
-
                         <button
-                          @click="delModal()"
+                          @click="delModal(user)"
                           type="button"
-                          class="py-1 px-2 inline-flex items-center gap-x-2 text-sm font-medium rounded-md border border-transparent bg-red-100 text-red-800 hover:bg-red-200 focus:outline-none focus:bg-red-200 disabled:opacity-50 disabled:pointer-events-none dark:text-red-500 dark:bg-red-800/30 dark:hover:bg-red-800/20 dark:focus:bg-red-800/20"
+                          class="py-1 px-2 inline-flex items-center gap-x-2 text-sm font-medium rounded-md border border-transparent bg-red-100 text-red-800 hover:bg-red-200 focus:outline-none"
                         >
                           <i class="bx bx-trash"></i>
                         </button>
@@ -214,7 +164,7 @@
                   as="h3"
                   class="text-lg font-semibold leading-6 text-gray-900 mb-5 dark:text-white"
                 >
-                  Input Data User
+                  {{ isEdit === false ? "Input Data User" : "Edit Data User" }}
                 </DialogTitle>
                 <div class="mt-2">
                   <form @submit.prevent="" class="flex justify-between gap-3">
@@ -231,6 +181,7 @@
                           type="text"
                           name="nis"
                           id="nis"
+                          v-model="form.nis"
                           class="block w-full rounded-md border-0 py-1.5 pl-2 pr-1 dark:bg-neutral-900 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                           placeholder="Masukkan NIS"
                         />
@@ -247,6 +198,7 @@
                           type="text"
                           name="namaLengkap"
                           id="namaLengkap"
+                          v-model="form.nama_lengkap"
                           class="block w-full rounded-md border-0 py-1.5 pl-2 pr-1 dark:bg-neutral-900 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                           placeholder="Masukkan Nama Lengkap"
                         />
@@ -263,6 +215,7 @@
                           type="text"
                           name="namaPanggilan"
                           id="namaPanggilan"
+                          v-model="form.nama_panggilan"
                           class="block w-full rounded-md border-0 py-1.5 pl-2 pr-1 dark:bg-neutral-900 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                           placeholder="Masukkan Nama Panggilan"
                         />
@@ -279,6 +232,7 @@
                           type="text"
                           name="nik"
                           id="nik"
+                          v-model="form.nik"
                           class="block w-full rounded-md border-0 py-1.5 pl-2 pr-1 dark:bg-neutral-900 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                           placeholder="Masukkan NIK"
                         />
@@ -291,10 +245,11 @@
                       >
                       <select
                         class="py-2 px-2 pe-9 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
+                        v-model="form.jk"
                       >
                         <option selected="">- Pilih Jenis Kelamin -</option>
-                        <option value="0">Laki-Laki</option>
-                        <option value="1">Perempuan</option>
+                        <option value="L">Laki-Laki</option>
+                        <option value="P">Perempuan</option>
                       </select>
                       <!-- End Jenis Kelamin -->
                       <!-- TTL -->
@@ -311,6 +266,7 @@
                             name="tempat"
                             id="tempat"
                             type="text"
+                            v-model="form.tempat"
                             class="py-2 px-2 pe-1 block w-full border-gray-600 shadow-sm -ms-px first:rounded-t-sm last:rounded-b-sm sm:first:rounded-s-md sm:mt-0 sm:first:ms-0 sm:first:rounded-se-none sm:last:rounded-es-none sm:last:rounded-e-md text-sm relative focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
                             placeholder="Tempat"
                           />
@@ -320,6 +276,7 @@
                           >
                           <input
                             type="date"
+                            v-model="form.tgl_lahir"
                             class="py-2 px-2 pe-2 block w-full border-gray-200 shadow-sm -mt-px -ms-px first:rounded-t-sm last:rounded-b-sm sm:first:rounded-s-lg sm:mt-0 sm:first:ms-0 sm:first:rounded-se-none sm:last:rounded-es-none sm:last:rounded-e-lg text-sm relative focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
                           />
                         </div>
@@ -336,6 +293,7 @@
                           type="text"
                           name="noHp"
                           id="noHp"
+                          v-model="form.no_hp"
                           class="block w-full rounded-md border-0 py-1.5 pl-2 pr-1 dark:bg-neutral-900 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                           placeholder="Masukkan No. HP"
                         />
@@ -355,6 +313,7 @@
                           type="email"
                           name="email"
                           id="email"
+                          v-model="form.email"
                           class="block w-full rounded-md border-0 py-1.5 pl-2 pr-1 dark:bg-neutral-900 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                           placeholder="Masukkan Email"
                         />
@@ -371,6 +330,7 @@
                           type="text"
                           name="riwayatPenyakit"
                           id="riwayatPenyakit"
+                          v-model="form.riwayat_penyakit"
                           class="block w-full rounded-md border-0 py-1.5 pl-2 pr-1 dark:bg-neutral-900 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                           placeholder="Masukkan Riwayat Penyakit"
                         />
@@ -387,6 +347,7 @@
                           type="text"
                           name="alamat"
                           id="alamat"
+                          v-model="form.alamat"
                           class="block w-full rounded-md border-0 py-1.5 pl-2 pr-1 dark:bg-neutral-900 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                           placeholder="Masukkan Alamat"
                         />
@@ -403,6 +364,7 @@
                           type="text"
                           name="kota"
                           id="kota"
+                          v-model="form.kota"
                           class="block w-full rounded-md border-0 py-1.5 pl-2 pr-1 dark:bg-neutral-900 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                           placeholder="Masukkan Kota"
                         />
@@ -419,6 +381,7 @@
                           type="number"
                           name="kodePos"
                           id="kodePos"
+                          v-model="form.kode_post"
                           class="block w-full rounded-md border-0 py-1.5 pl-2 pr-1 dark:bg-neutral-900 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                           placeholder="Masukkan Kode Pos"
                         />
@@ -437,6 +400,7 @@
                           id="berat"
                           name="berat"
                           type="number"
+                          v-model="form.berat_badan"
                           class="py-2 px-2 pe-1 block w-full border-gray-600 shadow-sm -ms-px first:rounded-t-sm last:rounded-b-sm sm:first:rounded-s-md sm:mt-0 sm:first:ms-0 sm:first:rounded-se-none sm:last:rounded-es-none sm:last:rounded-e-md text-sm relative focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
                           placeholder="Berat"
                         />
@@ -446,6 +410,7 @@
                         >
                         <input
                           type="number"
+                          v-model="form.tinggi_badan"
                           class="py-2 px-2 pe-2 block w-full border-gray-200 shadow-sm -mt-px -ms-px first:rounded-t-sm last:rounded-b-sm sm:first:rounded-s-lg sm:mt-0 sm:first:ms-0 sm:first:rounded-se-none sm:last:rounded-es-none sm:last:rounded-e-lg text-sm relative focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
                           placeholder="Tinggi"
                         />
@@ -463,9 +428,10 @@
                       >
                       <div class="relative mt-1 rounded-md shadow-sm">
                         <input
-                          type="number"
+                          type="text"
                           name="pendidikan"
                           id="pendidikan"
+                          v-model="form.pendidikan_terakhir"
                           class="block w-full rounded-md border-0 py-1.5 pl-2 pr-1 dark:bg-neutral-900 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                           placeholder="Masukkan Pendidikan Terakhir"
                         />
@@ -487,6 +453,7 @@
                           name="anakKe"
                           id="anakKe"
                           type="number"
+                          v-model="form.anak_ke"
                           class="py-2 px-2 pe-1 block w-full border-gray-600 shadow-sm -ms-px first:rounded-t-sm last:rounded-b-sm sm:first:rounded-s-md sm:mt-0 sm:first:ms-0 sm:first:rounded-se-none sm:last:rounded-es-none sm:last:rounded-e-md text-sm relative focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
                           placeholder="Anak Ke"
                         />
@@ -496,6 +463,7 @@
                         >
                         <input
                           type="number"
+                          v-model="form.anak_dari"
                           class="py-2 px-2 pe-2 block w-full border-gray-200 shadow-sm -mt-px -ms-px first:rounded-t-sm last:rounded-b-sm sm:first:rounded-s-lg sm:mt-0 sm:first:ms-0 sm:first:rounded-se-none sm:last:rounded-es-none sm:last:rounded-e-lg text-sm relative focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
                           placeholder="Dari"
                         />
@@ -512,6 +480,7 @@
                           type="date"
                           name="tahunMasuk"
                           id="tahunMasuk"
+                          v-model="form.tahun_masuk"
                           class="block w-full rounded-md border-0 py-1.5 pl-2 pr-1 dark:bg-neutral-900 dark:text-neutral-200 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                           placeholder="Masukkan Tahun Masuk"
                         />
@@ -528,6 +497,7 @@
                           type="date"
                           name="tahunKeluar"
                           id="tahunKeluar"
+                          v-model="form.tahun_keluar"
                           class="block w-full rounded-md border-0 py-1.5 pl-2 pr-1 dark:bg-neutral-900 dark:text-neutral-200 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                           placeholder="Masukkan Tahun Keluar"
                         />
@@ -540,13 +510,21 @@
                         >Kamar</label
                       >
                       <div class="relative mt-1 rounded-md shadow-sm">
-                        <input
-                          type="text"
-                          name="kamar"
-                          id="kamar"
-                          class="block w-full rounded-md border-0 py-1.5 pl-2 pr-1 dark:bg-neutral-900 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                          placeholder="Masukkan Kamar"
-                        />
+                        <select
+                          class="py-2 px-2 pe-9 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
+                          v-model="form.kamar_id"
+                          id=""
+                        >
+                          <option
+                            v-for="kmr in filteredKamars"
+                            :value="kmr.id"
+                            :key="kmr.id"
+                          >
+                            {{ kmr.nama_kamar }} | {{ kmr.santris.length }}/{{
+                              kmr.kapasitas
+                            }}
+                          </option>
+                        </select>
                       </div>
                       <!-- End Kamar -->
                       <!-- Keterangan -->
@@ -560,6 +538,7 @@
                           type="text"
                           name="keterangan"
                           id="keterangan"
+                          v-model="form.keterangan"
                           class="block w-full rounded-md border-0 py-1.5 pl-2 pr-1 dark:bg-neutral-900 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                           placeholder="Masukkan Keterangan"
                         />
@@ -580,7 +559,7 @@
                   <button
                     type="button"
                     class="inline-flex justify-center items-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                    @click="closeModal"
+                    @click="submitForm()"
                   >
                     <i class="bx bx-save me-1"></i> Simpan
                   </button>
@@ -657,12 +636,14 @@
                         Konfirmasi
                       </h3>
                       <p class="text-gray-500 dark:text-neutral-500">
-                        Apakah anda yakin untuk menghapus user [user]
+                        Apakah anda yakin untuk menghapus user
+                        {{ userSelected.nama_lengkap }}
                       </p>
 
                       <div class="mt-6 grid gap-y-2">
                         <button
                           type="button"
+                          @click="deleteData()"
                           class="py-2.5 px-4 w-full inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-red-200 bg-red-200 text-red-800 shadow-sm hover:bg-red-300 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:bg-red-50 dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:hover:bg-neutral-800 dark:focus:bg-neutral-800"
                         >
                           Ya, Saya Yakin
@@ -697,7 +678,7 @@ useHead({
 });
 
 import Card from "../../components/Card.vue";
-import { ref, onMounted, nextTick } from "vue";
+import { ref, computed, onMounted, nextTick } from "vue";
 import axios from "@/plugins/axios";
 import {
   TransitionRoot,
@@ -712,40 +693,49 @@ const isDel = ref(false);
 const users = ref([]);
 //** Modal */
 const isOpen = ref(false);
+const isEdit = ref(false);
 function closeModal() {
   isOpen.value = false;
+  isEdit.value = false;
 }
 function openModal() {
   isOpen.value = true;
 }
-const delModal = (userId) => {
+
+const userSelected = ref({});
+const delModal = (user) => {
+  userSelected.value = user;
   isDel.value = true;
 };
 //** End Modal */
 const errors = ref([]);
+const formatDate = (dateString) => {
+  const [day, month, year] = dateString.split("/");
+  return `${year}-${month}-${day}`;
+};
 const initialForm = {
   nis: null,
   nama_lengkap: "",
-  panggilan: "",
+  nama_panggilan: "", // nama_panggilan
   nik: "",
-  jk: null,
-  tempat_lahir: "",
-  tgl_lahir: "",
+  jk: "",
+  tempat: "", // tempat
+  tgl_lahir: null,
   no_hp: "",
   email: "",
   riwayat_penyakit: "",
   keterangan: "",
   anak_ke: null,
-  dari: null,
+  anak_dari: null, // anak_dari
   alamat: "",
   kota: "",
-  kode_pos: null,
-  tinggi: null,
-  berat: null,
-  kamar: null,
-  pendidikan: "",
-  tahun_masuk: "",
-  tahun_keluar: "",
+  kode_post: null, // kode_post
+  tinggi_badan: null, // tinggi_badan
+  berat_badan: null, // berat_badan
+  kamar_id: null, // kamar_id
+  pendidikan_terakhir: "", // pendidikan_terakhir
+  tahun_masuk: null,
+  tahun_keluar: null,
 };
 
 const edited = ref(false);
@@ -753,32 +743,91 @@ const edited = ref(false);
 const form = ref({ ...initialForm });
 
 const toast = useToast();
-const submitForm = async () => {
+
+const openEditModal = (user) => {
+  form.value = user;
+  isEdit.value = true;
+  openModal();
+};
+// delete data /santris/{id}/delete
+
+const deleteData = async () => {
   await axios
-    .post("/santri", form.value)
+    .delete(`/santris/${userSelected.value.id}/delete`)
     .then((res) => {
       console.log(res);
-      errors.value = [];
-      form.value = { ...initialForm };
-      toast.success("Berhasil menambahkan data baru!");
-      const gg = new HSOverlay(document.querySelector("#hs-large-modal"));
-      const btnClose = document.querySelector("#btnClose");
-      btnClose.addEventListener("click", () => {
-        gg.close();
-      });
+      toast.success("Berhasil menghapus data!");
+      getdata();
+      isDel.value = false;
     })
     .catch((err) => {
-      toast.error("Gagal menambahkan data baru!");
-      errors.value = err.response.data.errors;
+      toast.error("Gagal menghapus data!");
+      console.log(err);
+    });
+};
+const submitForm = async () => {
+  if (isEdit.value) {
+    await axios
+      .put(`/santris/${userSelected.value.id}`, form.value)
+      .then((res) => {
+        console.log(res);
+        errors.value = [];
+        form.value = { ...initialForm };
+        toast.success("Berhasil mengedit data!");
+        if (res.status === 200) {
+          isEdit.value = false;
+          closeModal();
+          getdata();
+        }
+      })
+      .catch((err) => {
+        toast.error("Gagal mengubah data!");
+        console.log(err);
+      });
+  } else {
+    await axios
+      .post("/insert", form.value)
+      .then((res) => {
+        console.log(res);
+        errors.value = [];
+        form.value = { ...initialForm };
+        toast.success("Berhasil menambahkan data baru!");
+        if (res.status === 200) {
+          closeModal();
+          getdata();
+        }
+      })
+      .catch((err) => {
+        toast.error("Gagal menambahkan data baru!");
+        errors.value = err.response.data.errors;
+        console.log(err);
+      });
+  }
+};
+const kamars = ref({});
+const getDataKamar = async () => {
+  await axios
+    .get("/kamars")
+    .then((res) => {
+      kamars.value = res.data;
+      console.log(res.data);
+    })
+    .catch((err) => {
       console.log(err);
     });
 };
 
+const filteredKamars = computed(() => {
+  return kamars.value.filter((kmr) => {
+    return kmr.santris.length < kmr.kapasitas;
+  });
+});
 const getdata = () => {
   axios
-    .get("/santri")
+    .get("/santris")
     .then((res) => {
-      users.value = res.data.data;
+      users.value = res.data;
+      console.log(res.data);
       nextTick(() => {
         $("#example").DataTable();
       });
@@ -812,5 +861,6 @@ const resetForm = () => {
 };
 onMounted(() => {
   getdata();
+  getDataKamar();
 });
 </script>

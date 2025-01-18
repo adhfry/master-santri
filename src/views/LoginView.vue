@@ -34,6 +34,7 @@
                     type="text"
                     id="hs-leading-icon"
                     name="hs-leading-icon"
+                    v-model="dataForm.email"
                     class="py-3 px-4 ps-11 border block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
                     placeholder="santri@gmail.com"
                   />
@@ -71,6 +72,7 @@
                     type="password"
                     id="hs-leading-icon"
                     name="hs-leading-icon"
+                    v-model="dataForm.password"
                     class="py-3 px-4 border ps-11 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
                     placeholder="*****"
                   />
@@ -85,7 +87,7 @@
               </div>
               <button
                 class="mt-5 tracking-wide font-semibold bg-indigo-500 text-gray-100 w-full py-2 rounded-md hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
-                @click="$router.push('/home')"
+                @click="login()"
               >
                 <i class="bx bx-log-in text-lg"></i>
                 <span class="ml-3"> Log in </span>
@@ -135,8 +137,9 @@
 
 <script setup>
 import { useHead } from "unhead";
-import { onMounted } from "vue";
-
+import { onMounted, ref } from "vue";
+import { useRouter } from "vue-router";
+import axios from "@/plugins/axios";
 useHead({
   title: "Login",
   meta: [
@@ -147,6 +150,28 @@ useHead({
     },
   ],
 });
+
+const router = useRouter();
+const dataForm = ref({
+  email: "",
+  password: "",
+});
+const login = async () => {
+  try {
+    const response = await axios.post("/login", dataForm.value);
+    console.log(response);
+    // set local storage for access_token, token_type, user
+    localStorage.setItem("access_token", response.data.access_token);
+    localStorage.setItem("token_type", response.data.token_type);
+    localStorage.setItem("user", JSON.stringify(response.data.user));
+    if (response.status == 200) {
+      router.push("/home");
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 onMounted(() => {
   const cekRefresh = localStorage.getItem("cekRefresh");
   if (cekRefresh) {
