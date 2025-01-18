@@ -166,9 +166,7 @@ const login = async () => {
     if (response.status == 200) {
       router.push("/home");
     }
-  } catch (error) {
-    .log(error);
-  }
+  } catch (error) {}
 };
 
 onMounted(() => {

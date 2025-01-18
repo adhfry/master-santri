@@ -660,13 +660,11 @@ const editKamar = (kamarId) => {
   editKamarModal.value = true;
   selectedKamar.value = kamars.value.find((kamar) => kamar.id === kamarId);
   form.value = selectedKamar.value;
-  console.log(`Edit kamar with id: ${kamarId}`);
 };
 
 const deleteKamar = (kamarId) => {
   isDel.value = true;
   selectedDelKamar.value = kamarId;
-  console.log(`Delete kamar with id: ${kamarId}`);
 };
 
 const getSantrisInKamar = (kamarId) => {
@@ -793,7 +791,6 @@ const submitForm = async () => {
   await axios
     .post("/kamars", form.value)
     .then((res) => {
-      console.log(res);
       errors.value = [];
       form.value = { ...initialForm };
       if (res.status === 200) {
@@ -805,7 +802,6 @@ const submitForm = async () => {
     .catch((err) => {
       toast.error("Gagal menambahkan data baru!");
       errors.value = err.response.data.errors;
-      console.log(err);
     });
 };
 
@@ -818,18 +814,13 @@ const getdata = () => {
         $("#example").DataTable();
       });
     })
-    .catch((err) => {
-      console.log(err);
-    });
+    .catch((err) => {});
   axios
     .get("/santris")
     .then((res) => {
       users.value = res.data;
-      console.log(res.data);
     })
-    .catch((err) => {
-      console.log(err);
-    });
+    .catch((err) => {});
 };
 
 const editForm = (user) => {
@@ -837,7 +828,6 @@ const editForm = (user) => {
   const openBtn = new HSOverlay(document.querySelector("#modal-gg"));
   openBtn.addEventListener("click", () => {
     HSOverlay.open("#modal-edit");
-    console.log("kesini");
   });
 };
 
