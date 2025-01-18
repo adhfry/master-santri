@@ -211,13 +211,14 @@
                 </p>
               </div>
               <div class="p-1.5 space-y-0.5">
-                <router-link
+                <button
                   class="flex items-center gap-1 justify-center py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700 dark:focus:text-neutral-300"
-                  to="/"
+                  type="button"
+                  @click="logout()"
                 >
                   <i class="bx bx-log-out"></i>
                   Log Out
-                </router-link>
+                </button>
               </div>
             </div>
           </div>
@@ -230,6 +231,7 @@
 
 <script setup>
 import { ref, computed, onMounted } from "vue";
+import { useRouter } from "vue-router";
 import { format } from "date-fns";
 import { id as idLocale } from "date-fns/locale";
 import ThemeSwitcher from "./ThemeSwitcher.vue";
@@ -245,6 +247,16 @@ const darkMode = computed(() => themeStore.darkMode);
 const now = ref(new Date());
 const updateClock = () => {
   now.value = new Date();
+};
+
+const router = useRouter();
+// Logout
+
+const logout = () => {
+  localStorage.removeItem("user");
+  localStorage.removeItem("access_token");
+  localStorage.removeItem("token_type");
+  router.push("/login");
 };
 
 // untuk jam

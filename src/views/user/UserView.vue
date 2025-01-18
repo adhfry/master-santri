@@ -98,7 +98,7 @@
                         class="px-6 py-4 flex gap-2 whitespace-nowrap text-center text-sm font-medium"
                       >
                         <button
-                          @click="openModal(user)"
+                          @click="seeUser(user)"
                           type="button"
                           class="py-1 px-2 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-100 text-blue-800 hover:bg-blue-200 focus:outline-none"
                         >
@@ -164,7 +164,13 @@
                   as="h3"
                   class="text-lg font-semibold leading-6 text-gray-900 mb-5 dark:text-white"
                 >
-                  {{ isEdit === false ? "Input Data User" : "Edit Data User" }}
+                  {{
+                    seeMode
+                      ? "Preview Data"
+                      : isEdit === false
+                      ? "Input Data User"
+                      : "Edit Data User"
+                  }}
                 </DialogTitle>
                 <div class="mt-2">
                   <form @submit.prevent="" class="flex justify-between gap-3">
@@ -181,6 +187,7 @@
                           type="text"
                           name="nis"
                           id="nis"
+                          :disabled="seeMode"
                           v-model="form.nis"
                           class="block w-full rounded-md border-0 py-1.5 pl-2 pr-1 dark:bg-neutral-900 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                           placeholder="Masukkan NIS"
@@ -198,6 +205,7 @@
                           type="text"
                           name="namaLengkap"
                           id="namaLengkap"
+                          :disabled="seeMode"
                           v-model="form.nama_lengkap"
                           class="block w-full rounded-md border-0 py-1.5 pl-2 pr-1 dark:bg-neutral-900 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                           placeholder="Masukkan Nama Lengkap"
@@ -215,6 +223,7 @@
                           type="text"
                           name="namaPanggilan"
                           id="namaPanggilan"
+                          :disabled="seeMode"
                           v-model="form.nama_panggilan"
                           class="block w-full rounded-md border-0 py-1.5 pl-2 pr-1 dark:bg-neutral-900 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                           placeholder="Masukkan Nama Panggilan"
@@ -232,6 +241,7 @@
                           type="text"
                           name="nik"
                           id="nik"
+                          :disabled="seeMode"
                           v-model="form.nik"
                           class="block w-full rounded-md border-0 py-1.5 pl-2 pr-1 dark:bg-neutral-900 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                           placeholder="Masukkan NIK"
@@ -245,6 +255,7 @@
                       >
                       <select
                         class="py-2 px-2 pe-9 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
+                        :disabled="seeMode"
                         v-model="form.jk"
                       >
                         <option selected="">- Pilih Jenis Kelamin -</option>
@@ -266,6 +277,7 @@
                             name="tempat"
                             id="tempat"
                             type="text"
+                            :disabled="seeMode"
                             v-model="form.tempat"
                             class="py-2 px-2 pe-1 block w-full border-gray-600 shadow-sm -ms-px first:rounded-t-sm last:rounded-b-sm sm:first:rounded-s-md sm:mt-0 sm:first:ms-0 sm:first:rounded-se-none sm:last:rounded-es-none sm:last:rounded-e-md text-sm relative focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
                             placeholder="Tempat"
@@ -276,6 +288,7 @@
                           >
                           <input
                             type="date"
+                            :disabled="seeMode"
                             v-model="form.tgl_lahir"
                             class="py-2 px-2 pe-2 block w-full border-gray-200 shadow-sm -mt-px -ms-px first:rounded-t-sm last:rounded-b-sm sm:first:rounded-s-lg sm:mt-0 sm:first:ms-0 sm:first:rounded-se-none sm:last:rounded-es-none sm:last:rounded-e-lg text-sm relative focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
                           />
@@ -293,6 +306,7 @@
                           type="text"
                           name="noHp"
                           id="noHp"
+                          :disabled="seeMode"
                           v-model="form.no_hp"
                           class="block w-full rounded-md border-0 py-1.5 pl-2 pr-1 dark:bg-neutral-900 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                           placeholder="Masukkan No. HP"
@@ -313,6 +327,7 @@
                           type="email"
                           name="email"
                           id="email"
+                          :disabled="seeMode"
                           v-model="form.email"
                           class="block w-full rounded-md border-0 py-1.5 pl-2 pr-1 dark:bg-neutral-900 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                           placeholder="Masukkan Email"
@@ -330,6 +345,7 @@
                           type="text"
                           name="riwayatPenyakit"
                           id="riwayatPenyakit"
+                          :disabled="seeMode"
                           v-model="form.riwayat_penyakit"
                           class="block w-full rounded-md border-0 py-1.5 pl-2 pr-1 dark:bg-neutral-900 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                           placeholder="Masukkan Riwayat Penyakit"
@@ -347,6 +363,7 @@
                           type="text"
                           name="alamat"
                           id="alamat"
+                          :disabled="seeMode"
                           v-model="form.alamat"
                           class="block w-full rounded-md border-0 py-1.5 pl-2 pr-1 dark:bg-neutral-900 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                           placeholder="Masukkan Alamat"
@@ -364,6 +381,7 @@
                           type="text"
                           name="kota"
                           id="kota"
+                          :disabled="seeMode"
                           v-model="form.kota"
                           class="block w-full rounded-md border-0 py-1.5 pl-2 pr-1 dark:bg-neutral-900 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                           placeholder="Masukkan Kota"
@@ -381,6 +399,7 @@
                           type="number"
                           name="kodePos"
                           id="kodePos"
+                          :disabled="seeMode"
                           v-model="form.kode_post"
                           class="block w-full rounded-md border-0 py-1.5 pl-2 pr-1 dark:bg-neutral-900 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                           placeholder="Masukkan Kode Pos"
@@ -400,6 +419,7 @@
                           id="berat"
                           name="berat"
                           type="number"
+                          :disabled="seeMode"
                           v-model="form.berat_badan"
                           class="py-2 px-2 pe-1 block w-full border-gray-600 shadow-sm -ms-px first:rounded-t-sm last:rounded-b-sm sm:first:rounded-s-md sm:mt-0 sm:first:ms-0 sm:first:rounded-se-none sm:last:rounded-es-none sm:last:rounded-e-md text-sm relative focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
                           placeholder="Berat"
@@ -410,6 +430,7 @@
                         >
                         <input
                           type="number"
+                          :disabled="seeMode"
                           v-model="form.tinggi_badan"
                           class="py-2 px-2 pe-2 block w-full border-gray-200 shadow-sm -mt-px -ms-px first:rounded-t-sm last:rounded-b-sm sm:first:rounded-s-lg sm:mt-0 sm:first:ms-0 sm:first:rounded-se-none sm:last:rounded-es-none sm:last:rounded-e-lg text-sm relative focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
                           placeholder="Tinggi"
@@ -431,6 +452,7 @@
                           type="text"
                           name="pendidikan"
                           id="pendidikan"
+                          :disabled="seeMode"
                           v-model="form.pendidikan_terakhir"
                           class="block w-full rounded-md border-0 py-1.5 pl-2 pr-1 dark:bg-neutral-900 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                           placeholder="Masukkan Pendidikan Terakhir"
@@ -453,6 +475,7 @@
                           name="anakKe"
                           id="anakKe"
                           type="number"
+                          :disabled="seeMode"
                           v-model="form.anak_ke"
                           class="py-2 px-2 pe-1 block w-full border-gray-600 shadow-sm -ms-px first:rounded-t-sm last:rounded-b-sm sm:first:rounded-s-md sm:mt-0 sm:first:ms-0 sm:first:rounded-se-none sm:last:rounded-es-none sm:last:rounded-e-md text-sm relative focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
                           placeholder="Anak Ke"
@@ -463,6 +486,7 @@
                         >
                         <input
                           type="number"
+                          :disabled="seeMode"
                           v-model="form.anak_dari"
                           class="py-2 px-2 pe-2 block w-full border-gray-200 shadow-sm -mt-px -ms-px first:rounded-t-sm last:rounded-b-sm sm:first:rounded-s-lg sm:mt-0 sm:first:ms-0 sm:first:rounded-se-none sm:last:rounded-es-none sm:last:rounded-e-lg text-sm relative focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
                           placeholder="Dari"
@@ -480,6 +504,7 @@
                           type="date"
                           name="tahunMasuk"
                           id="tahunMasuk"
+                          :disabled="seeMode"
                           v-model="form.tahun_masuk"
                           class="block w-full rounded-md border-0 py-1.5 pl-2 pr-1 dark:bg-neutral-900 dark:text-neutral-200 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                           placeholder="Masukkan Tahun Masuk"
@@ -497,6 +522,7 @@
                           type="date"
                           name="tahunKeluar"
                           id="tahunKeluar"
+                          :disabled="seeMode"
                           v-model="form.tahun_keluar"
                           class="block w-full rounded-md border-0 py-1.5 pl-2 pr-1 dark:bg-neutral-900 dark:text-neutral-200 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                           placeholder="Masukkan Tahun Keluar"
@@ -512,6 +538,7 @@
                       <div class="relative mt-1 rounded-md shadow-sm">
                         <select
                           class="py-2 px-2 pe-9 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
+                          :disabled="seeMode"
                           v-model="form.kamar_id"
                           id=""
                         >
@@ -538,6 +565,7 @@
                           type="text"
                           name="keterangan"
                           id="keterangan"
+                          :disabled="seeMode"
                           v-model="form.keterangan"
                           class="block w-full rounded-md border-0 py-1.5 pl-2 pr-1 dark:bg-neutral-900 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                           placeholder="Masukkan Keterangan"
@@ -552,12 +580,13 @@
                   <button
                     type="button"
                     class="inline-flex justify-center items-center rounded-md border border-transparent bg-gray-100 px-4 py-2 text-sm font-medium text-gray-900 hover:bg-gray-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-500 focus-visible:ring-offset-2"
-                    @click="closeModal"
+                    @click="closeModal()"
                   >
                     <i class="bx bx-log-out-circle me-1"></i> Batal
                   </button>
                   <button
                     type="button"
+                    v-if="!seeMode"
                     class="inline-flex justify-center items-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                     @click="submitForm()"
                   >
@@ -697,11 +726,18 @@ const isEdit = ref(false);
 function closeModal() {
   isOpen.value = false;
   isEdit.value = false;
+  seeMode.value = false;
 }
 function openModal() {
   isOpen.value = true;
 }
-
+const seeMode = ref(false);
+const seeUser = (user) => {
+  openModal();
+  userSelected.value = user;
+  form.value = userSelected.value;
+  seeMode.value = true;
+};
 const userSelected = ref({});
 const delModal = (user) => {
   userSelected.value = user;
